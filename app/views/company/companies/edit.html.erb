@@ -1,2 +1,44 @@
-<h1>Companies::Conpanies#edit</h1>
-<p>Find me in app/views/companies/conpanies/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <%= form_with model: @company, url:company_path(current_company) do |f| %>
+        <div class="field">
+          <%= f.label "プロフィール画像" %>
+          <%= f.file_field :company_image %>
+        </div>
+        <div class="field">
+          <%= f.label "会社名" %><br />
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.label "職種" %><br />
+          <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "--選択してください--" %>
+        </div>
+
+        <div class="field">
+          <%= f.label "会社説明" %><br />
+          <%= f.text_area :detail %>
+        </div>
+
+        <div class="field">
+          <%= f.label "勤務地" %><br />
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--選択してください--" %>
+          <%= f.text_field :city %>
+        </div>
+
+        <div class="field">
+          <%= f.label "雇用形態" %><br />
+          <%= f.radio_button :employment_status, :true, checked: true %>
+          <%= f.label :employment_status, "正社員" %><br>
+          <%= f.radio_button :employment_status, :false %>
+          <%= f.label :employment_status, "アルバイト/パート" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "保存" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

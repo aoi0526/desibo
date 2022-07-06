@@ -9,14 +9,16 @@
   </div>
 
   <div class="field">
-    <%= f.label "勤務地" %><br />
-    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--選択してください--" %>
-  </div>
-
-  <div class="field">
     <%= f.label "職種" %><br />
     <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "--選択してください--" %>
   </div>
+
+  <div class="field">
+    <%= f.label "勤務地" %><br />
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--選択してください--" %>
+    <%= f.text_field :city %>
+  </div>
+
 
   <div class="field">
     <%= f.label "雇用形態" %><br />

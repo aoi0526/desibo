@@ -1,2 +1,35 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>プロフィール画像</td>
+            <th>
+              <% if @user.user_image.attached? %>
+                <%= image_tag @user.user_image, size:"75x75" %>
+              <% else %>
+                <%= image_tag "no-image.jpeg" %>
+              <% end %>
+            </th>
+          </tr>
+          <tr>
+            <td>名前</td>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <td>自己紹介</td>
+            <th><%= @user.detail %></th>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <th><%= @user.prefecture.name %><%= @user.city %></th>
+          </tr>
+          <tr>
+            <td><%= link_to "編集する", edit_user_path %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

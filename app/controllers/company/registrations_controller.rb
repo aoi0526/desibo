@@ -53,7 +53,7 @@ class Company::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    company_mypage_path
+    company_path(current_company.id)
   end
 
   # The path used after sign up for inactive accounts.
@@ -71,7 +71,7 @@ class Company::RegistrationsController < Devise::RegistrationsController
   # end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :occupation_genre_id, :prefecture_id, :employment_status])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :occupation_genre, :prefecture_id, :city, :employment_status])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :occupation_genre_id, :prefecture_id, :city, :employment_status])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :occupation_genre_id, :prefecture_id, :city, :employment_status,])
   end
 end

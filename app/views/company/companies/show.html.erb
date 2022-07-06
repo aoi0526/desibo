@@ -1,2 +1,49 @@
-<h1>Companies::Conpanies#show</h1>
-<p>Find me in app/views/companies/conpanies/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>プロフィール画像</td>
+            <th>
+              <% if @company.company_image.attached? %>
+                <%= image_tag @company.company_image, size:"75x75" %>
+              <% else %>
+                <%= image_tag "no-image.jpeg" %>
+              <% end %>
+            </th>
+          </tr>
+          <tr>
+            <td>会社名</td>
+            <th><%= @company.name %></th>
+          </tr>
+          <tr>
+            <td>職業ジャンル</td>
+            <th><%= @company.occupation_genre.name %></th>
+          </tr>
+          <tr>
+            <td>会社説明</td>
+            <th><%= @company.detail %></th>
+          </tr>
+          <tr>
+            <td>会社所在地</td>
+            <th><%= @company.prefecture.name %><%= @company.city %></th>
+          </tr>
+          <tr>
+            <td>雇用形態</td>
+            <th>
+              <%if @company.employment_status == true %>
+                正社員
+              <% else %>
+                アルバイト/パート
+              <% end %>
+            </th>
+          </tr>
+          <tr>
+            <td><%= link_to "編集する", edit_company_path %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

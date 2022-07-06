@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :company do
-    get 'company/mypage' => 'companies#show'
-    get 'company/edit' => 'companies#edit'
+    resources :companies, only: [:show, :edit, :update]
     patch 'company' => 'companies#update'
     resources :posts, only: [:index, :show, :new, :edit, :update, :create, :destroy]
     get 'user/show' => 'users#show'
@@ -26,11 +25,10 @@ Rails.application.routes.draw do
   }
 
   scope module: :user do
-    get 'user/mypage' => 'users#show'
-    get 'user/edit' => 'users#edit'
+    resources :users, only: [:show, :edit, :update]
     patch 'user' => 'user#update'
     resources :posts, only: [:index, :show]
-    get 'company/show' => 'companies#show'
+    resources :companies, only: [:show]
   end
 
 
