@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-3">
-      <%= form_with model: @company, url:company_path(current_company) do |f| %>
+      <%= form_with model: @company, url:company_company_path(current_company) do |f| %>
         <div class="field">
           <%= f.label "プロフィール画像" %>
           <%= f.file_field :company_image %>

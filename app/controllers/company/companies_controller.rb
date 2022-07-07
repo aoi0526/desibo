@@ -10,7 +10,7 @@ class Company::CompaniesController < ApplicationController
   def update
     @company = current_company
     @company.update(company_params)
-    redirect_to company_path(current_company)
+    redirect_to compacompany_path(current_company)
   end
 
   private

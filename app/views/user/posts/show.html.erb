@@ -1,2 +1,22 @@
-<h1>User::Posts#show</h1>
-<p>Find me in app/views/user/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <% if @post.company.company_image.attached? %>
+        <%= image_tag @post.company.company_image, size:"50x50" %>
+      <% else %>
+        <%= image_tag "no-image.jpeg", size:"50x50" %>
+      <% end %>
+
+      <%= @post.company.name %><br/>
+
+      <%= image_tag @post.post_image, size:"300x300" %><br/>
+
+      <%= @post.detail %><br/>
+
+      <%= @post.company.prefecture.name %> <%= @post.company.city %>
+
+      <%= @post.created_at.strftime('%Y/%m/%d %-H:%-M') %><br/>
+
+    </div>
+  </div>
+</div>

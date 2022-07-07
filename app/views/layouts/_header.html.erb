@@ -5,12 +5,12 @@
     </div>
     <ul class="navbar-nav ml-auro">
       <% if company_signed_in? %>
-        <li><%= link_to "マイページ", company_path(current_company.id) %></li>
-        <li><%= link_to "タイムライン", posts_path %></li>
+        <li><%= link_to "マイページ", company_company_path(current_company.id) %></li>
+        <li><%= link_to "タイムライン", company_posts_path %></li>
         <li><%= button_to "ログアウト", destroy_company_session_path, method: :delete %></li>
       <% elsif user_signed_in? %>
-        <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-        <li><%= link_to "タイムライン", posts_path %></li>
+        <li><%= link_to "マイページ", user_user_path(current_user.id) %></li>
+        <li><%= link_to "タイムライン", user_posts_path %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <% elsif admin_signed_in? %>
       <% else %>

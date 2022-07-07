@@ -17,9 +17,9 @@
 
       <%= @post.created_at.strftime('%Y/%m/%d %-H:%-M') %><br/>
 
-      <%= link_to "編集", edit_post_path %>
+      <%= link_to "編集", edit_company_post_path %>
 
-      <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？'} %>
+      <%= link_to "削除", company_post_path, method: :delete, data: { confirm: '本当に消しますか？'} %>
     </div>
   </div>
 </div>

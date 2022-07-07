@@ -1,9 +1,9 @@
 <div class-"container">
   <div class="row">
     <div class="col-md-6 offset-3">
-      <%= link_to "新規投稿", new_post_path %><br>
+      <%= link_to "新規投稿", new_company_post_path %><br>
       <% @posts.each do |post| %>
-        <%= link_to post_path(post.id) do %>
+        <%= link_to company_post_path(post.id) do %>
           <% if post.company.company_image.attached? %>
             <%= image_tag post.company.company_image, size:"50x50" %>
           <% else %>

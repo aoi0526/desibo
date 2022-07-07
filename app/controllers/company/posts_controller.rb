@@ -8,9 +8,9 @@ class Company::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.company_id = current_company.id
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to company_post_path(@post)
     else
-      redirect_to new_post_path
+      redirect_to new_company_post_path
     end
   end
 
@@ -29,18 +29,18 @@ class Company::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post)
+      redirect_to company_post_path(@post)
     else
-      redirect_to edit_post_path
+      redirect_to edit_company_post_path
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to posts_path
+      redirect_to company_posts_path
     else
-      redirect_to edit_post_path
+      redirect_to edit_company_post_path
     end
   end
 

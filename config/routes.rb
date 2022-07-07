@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
+
   root 'homes#top'
   get 'about' => 'homesabout'
-  
 
 
   #company側ルーティング
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   sessions: 'company/sessions'
   }
 
-  scope module: :company do
+  namespace :company do
     resources :companies, only: [:show, :edit, :update]
     patch 'company' => 'companies#update'
     resources :posts, only: [:index, :show, :new, :edit, :update, :create, :destroy]
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   sessions: 'user/sessions'
   }
 
-  scope module: :user do
+  namespace :user do
     resources :users, only: [:show, :edit, :update]
     patch 'user' => 'user#update'
     resources :posts, only: [:index, :show]
