@@ -1,2 +1,25 @@
-<h1>Companies::Posts#show</h1>
-<p>Find me in app/views/companies/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <% if @post.company.company_image.attached? %>
+        <%= image_tag @post.company.company_image, size:"50x50" %>
+      <% else %>
+        <%= image_tag "no-image.jpeg", size:"50x50" %>
+      <% end %>
+
+      <%= @post.company.name %><br/>
+
+      <%= image_tag @post.post_image, size:"300x300" %><br/>
+
+      <%= @post.detail %><br/>
+
+      <%= @post.company.prefecture.name %> <%= @post.company.city %>
+
+      <%= @post.created_at.strftime('%Y/%m/%d %-H:%-M') %><br/>
+
+      <%= link_to "編集", edit_post_path %>
+
+      <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？'} %>
+    </div>
+  </div>
+</div>
