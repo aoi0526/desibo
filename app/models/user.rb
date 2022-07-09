@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   has_one_attached :user_image
 
+  def get_user_image
+    (user_image.attached?) ? user_image : 'no-image.jpeg'
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 end

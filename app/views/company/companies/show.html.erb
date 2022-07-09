@@ -5,13 +5,7 @@
         <tbody>
           <tr>
             <td>プロフィール画像</td>
-            <th>
-              <% if @company.company_image.attached? %>
-                <%= image_tag @company.company_image, size:"75x75" %>
-              <% else %>
-                <%= image_tag "no-image.jpeg" %>
-              <% end %>
-            </th>
+            <th><%= image_tag @company.get_company_image, size:"75x75" %></th>
           </tr>
           <tr>
             <td>会社名</td>
@@ -40,7 +34,11 @@
             </th>
           </tr>
           <tr>
-            <td><%= link_to "編集する", edit_company_company_path %></td>
+            <td>
+              <% if @company == current_company %>
+                <%= link_to "編集する", edit_company_company_path %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

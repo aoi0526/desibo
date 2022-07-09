@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="coll-md-6 offset-3">
+      <% @companies.each do |company| %>
+
+        <p><%= image_tag company.get_company_image, size: "300x300" %></p>
+
+        <p><%= company.name %></p>
+
+        <p><%= company.occupation_genre.name %></p>
+
+        <p><%= company.prefecture.name %><%= company.city %></p>
+
+        <p><%if company.employment_status == true %></p>
+          正社員
+        <% else %>
+          アルバイト/パート
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

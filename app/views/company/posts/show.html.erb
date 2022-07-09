@@ -1,11 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-3">
-      <% if @post.company.company_image.attached? %>
-        <%= image_tag @post.company.company_image, size:"50x50" %>
-      <% else %>
-        <%= image_tag "no-image.jpeg", size:"50x50" %>
-      <% end %>
+      <%= image_tag @post.company.get_company_image, size:"50x50" %>
 
       <%= @post.company.name %><br/>
 

@@ -15,6 +15,10 @@ class Company < ApplicationRecord
 
   has_one_attached :company_image
 
+  def get_company_image
+    (company_image.attached?) ? company_image : 'no-image.jpeg'
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 end

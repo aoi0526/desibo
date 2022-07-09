@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get 'about' => 'homesabout'
+  get 'prefecture_search' => 'searches#prefecture_search'
+  get 'occupation_search' => 'searches#occupation_search'
 
 
   #company側ルーティング
@@ -29,7 +31,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     patch 'user' => 'user#update'
     resources :posts, only: [:index, :show]
-    resources :companies, only: [:show]
   end
 
 
