@@ -1,0 +1,9 @@
+<% if @company.favorited_by?(current_user) %>  <!-- ユーザーが「いいね」を押しているかを判別するためのメソッド -->
+  <%= link_to company_company_favorites_path(@company), method: :delete, remote: true do %>
+    💖
+  <% end %>
+<% else %>
+  <%= link_to company_company_favorites_path(@company), method: :post, remote: true do %>
+    ♡
+  <% end %>
+<% end %>

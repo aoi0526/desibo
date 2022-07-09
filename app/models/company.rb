@@ -10,6 +10,8 @@ class Company < ApplicationRecord
   has_many :fovorites
   has_many :rooms
   has_many :messages
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   belongs_to :occupation_genre
 
@@ -17,6 +19,10 @@ class Company < ApplicationRecord
 
   def get_company_image
     (company_image.attached?) ? company_image : 'no-image.jpeg'
+  end
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

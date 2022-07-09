@@ -11,6 +11,7 @@
       <% elsif user_signed_in? %>
         <li><%= link_to "マイページ", user_user_path(current_user.id) %></li>
         <li><%= link_to "タイムライン", user_posts_path %></li>
+        <li><%= link_to "気になる", user_favorites_path %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <% elsif admin_signed_in? %>
       <% else %>

@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   }
 
   namespace :company do
-    resources :companies, only: [:show, :edit, :update]
+    resources :companies, only: [:show, :edit, :update] do
+      resource :favorites, only: [:create, :destroy]
+    end
     patch 'company' => 'companies#update'
     resources :posts, only: [:index, :show, :new, :edit, :update, :create, :destroy]
     get 'user/show' => 'users#show'
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     patch 'user' => 'user#update'
     resources :posts, only: [:index, :show]
+    resources :favorites, only: [:index]
   end
 
 

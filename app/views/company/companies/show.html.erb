@@ -4,6 +4,13 @@
       <table class="table">
         <tbody>
           <tr>
+            <td>
+              <div id="company_favorites_<%= @company.id %>">
+                <%= render 'company/favorites/favorite', company: @company %>
+              </div>
+            </td>
+          </tr>
+          <tr>
             <td>プロフィール画像</td>
             <th><%= image_tag @company.get_company_image, size:"75x75" %></th>
           </tr>
