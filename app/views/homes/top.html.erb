@@ -1,10 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 offset-2">
-      <%= link_to "弟子を募集する", "/companies/sign_up" %>
+<div class="container-fulid top-image">
+  <div class="row text-center">
+
+    <h3 class="col-4 offset-1 top-text text-white">
+      後継者不足に悩んでいる企業様はこちらから
+    </h3>
+    <h3 class="col-4 offset-2 top-text text-white">
+      後継者不足を助けたい方はこちらから
+    </h3>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-md-3 pl-5">
+      <%= link_to "新規登録", "/companies/sign_up", class: "btn btn--orange btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
     </div>
-    <div class="col-md-4">
-      <%= link_to "弟子になる", "/users/sign_up" %>
+
+    <div class="col-md-3">
+      <%= link_to "ログイン", "/companies/sign_in", class: "btn btn--yellow btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
+    </div>
+
+    <div class="col-md-3">
+      <%= link_to "新規登録", "/users/sign_up", class: "btn btn--orange btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
+    </div>
+
+    <div class="col-md-3">
+      <%= link_to "ログイン", "users/sign_in", class: "btn btn--yellow btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
     </div>
   </div>
 </div>

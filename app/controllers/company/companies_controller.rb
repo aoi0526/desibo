@@ -1,6 +1,7 @@
 class Company::CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
+    @posts = Post.where(company_id: @company.id).all.order(created_at: :desc)
   end
 
   def edit
@@ -10,7 +11,7 @@ class Company::CompaniesController < ApplicationController
   def update
     @company = current_company
     @company.update(company_params)
-    redirect_to compacompany_path(current_company)
+    redirect_to company_company_path(current_company)
   end
 
   private

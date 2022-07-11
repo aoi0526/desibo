@@ -1,23 +1,39 @@
 <div class-"container">
   <div class="row">
-    <div class="col-md-6 offset-3">
-      <%= link_to "新規投稿", new_company_post_path %><br>
-      <% @posts.each do |post| %>
-        <%= link_to company_post_path(post.id) do %>
+    <% @posts.each do |post| %>
+    <div class="col-4 offset-4 bg-light post-shadow border bg-light rounded px-0 mb-5">
 
-          <%= image_tag post.company.get_company_image, size:"50x50" %>
-
-          <%= post.company.name %><br/>
-
-          <%= image_tag post.post_image, size:"300x300" %><br/>
-
-          <%= post.detail %><br/>
-
-          <%= post.company.prefecture.name %> <%= post.company.city %>
-
-          <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %><br/>
-        <% end %>
+      <%= link_to company_company_path(post.company.id) do %>
+        <div class="p-2">
+          <%= image_tag post.company.get_company_image, size:"50x50", class: "rounded-circle" %>
+          <%= post.company.name %>
+        </div>
       <% end %>
+
+      <%= link_to company_post_path(post.id) do %>
+        <%= image_tag post.post_image, style: "width: 100%; height: auto;" %><br/>
+
+        <p class="pt-3 px-2"><%= post.detail %></p>
+
+        <p class="pt-3 px-2"><%= post.company.prefecture.name %> <%= post.company.city %></p>
+
+        <div class="col-12 d-flex px-0 pb-3 pt-3">
+          <div class="col-6">
+            <% if company_signed_in? %>
+              <i class="fas fa-heart heart1"></i><%= post.likes.count %>
+            <% elsif user_signed_in? %>
+              <div id="post_likes_<%= post.id %>">
+                <%= render 'company/likes/like', post: post %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-6 text-right">
+            <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
     </div>
   </div>
 </div>

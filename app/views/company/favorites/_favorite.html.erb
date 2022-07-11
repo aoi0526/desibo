@@ -1,9 +1,13 @@
-<% if @company.favorited_by?(current_user) %>  <!-- ユーザーが「いいね」を押しているかを判別するためのメソッド -->
-  <%= link_to company_company_favorites_path(@company), method: :delete, remote: true do %>
-    💖
-  <% end %>
-<% else %>
-  <%= link_to company_company_favorites_path(@company), method: :post, remote: true do %>
-    ♡
+<% if user_signed_in? %>
+  <% if company.favorited_by?(current_user) %>  <!-- ユーザーが「いいね」を押しているかを判別するためのメソッド -->
+    <%= link_to company_company_favorites_path(company), method: :delete, remote: true do %>
+      <i class="fas fa-star bookmark1"></i>
+    <% end %>
+    <%= company.favorites.count %>人が気になる登録済みです！
+  <% else %>
+    <%= link_to company_company_favorites_path(company), method: :post, remote: true do %>
+      <i class="far fa-star bookmark2"></i>
+    <% end %>
+    <%= company.favorites.count %>人が気になる登録済みです！
   <% end %>
 <% end %>

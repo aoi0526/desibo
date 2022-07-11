@@ -18,7 +18,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     patch 'company' => 'companies#update'
-    resources :posts, only: [:index, :show, :new, :edit, :update, :create, :destroy]
+    resources :posts, only: [:index, :show, :new, :edit, :update, :create, :destroy] do
+      resource :likes, only: [:create, :destroy]
+    end
     get 'user/show' => 'users#show'
   end
 

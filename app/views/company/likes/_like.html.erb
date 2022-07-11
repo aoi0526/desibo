@@ -1,0 +1,11 @@
+<% if post.liked_by?(current_user) %>  <!-- ユーザーが「いいね」を押しているかを判別するためのメソッド -->
+  <%= link_to company_post_likes_path(post), method: :delete, remote: true do %>
+    <i class="fas fa-heart heart1"></i>
+    <%= post.likes.count %>  <!--　その投稿に何個「いいね」がついているか -->
+  <% end %>
+<% else %>
+  <%= link_to company_post_likes_path(post), method: :post, remote: true do %>
+    <i class="far fa-heart heart2"></i>
+    <%= post.likes.count %>
+  <% end %>
+<% end %>

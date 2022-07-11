@@ -1,3 +1,39 @@
 // Place all the styles related to the companies/conpanies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+svg.btn--orange {
+  color: #000;
+  background: #ffa500;
+  border-bottom: 5px solid #b84c00;
+  font-weight: bold;
+}
+
+.btn--orange:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #ff8c00;
+  border-bottom: 2px solid #b84c00;
+}
+
+.edit-btn {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button.btn--green {
+  color: #000;
+  background: #32cd32;
+  border-bottom: 5px solid #556b2f;
+  font-weight: bold;
+}
+
+.btn--green:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #006400;
+  border-bottom: 2px solid #556b2f;
+}
+

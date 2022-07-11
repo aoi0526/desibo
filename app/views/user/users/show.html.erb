@@ -1,35 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-3">
-      <table class="table">
+    <div class="col-md-6 offset-3 border border-company bg-light px-0 mb-5">
+      <%= image_tag @user.get_user_image, size:"200x150", style: "width: 100%; height: auto;" %>
+      <table class="table ">
         <tbody>
           <tr>
-            <td>プロフィール画像</td>
-            <th>
-              <% if @user.user_image.attached? %>
-                <%= image_tag @user.user_image, size:"75x75" %>
-              <% else %>
-                <%= image_tag "no-image.jpeg" %>
-              <% end %>
-            </th>
-          </tr>
-          <tr>
-            <td>名前</td>
+            <th>名前</th>
             <th><%= @user.name %></th>
           </tr>
           <tr>
-            <td>自己紹介</td>
+            <th>自己紹介</th>
             <th><%= @user.detail %></th>
           </tr>
           <tr>
-            <td>住所</td>
+            <th>住所</th>
             <th><%= @user.prefecture.name %><%= @user.city %></th>
-          </tr>
-          <tr>
-            <td><%= link_to "編集する", edit_user_user_path %></td>
           </tr>
         </tbody>
       </table>
+      <% if @user == current_user && user_signed_in? %>
+        <div class="text-right pb-3 pr-3">
+        <%= link_to edit_user_user_path do %>
+          <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

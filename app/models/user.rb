@@ -9,11 +9,17 @@ class User < ApplicationRecord
   has_many :messages
   has_many :likes
   has_many :commnets
+  has_many :likes, dependent: :destroy
+
 
   has_one_attached :user_image
 
   def get_user_image
     (user_image.attached?) ? user_image : 'no-image.jpeg'
+  end
+  
+  def liked_by?(post_id)
+    like.where(post_id: post.id).exists?
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

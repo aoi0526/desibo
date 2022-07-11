@@ -13,3 +13,156 @@
  *= require_tree .
  *= require_self
  */
+
+
+.top-image {
+  background-image: url("assets/udonn.jpg");
+  background-size:cover;
+  height: 1000px;
+}
+
+.top-link::before{
+content: '';
+position: absolute;
+top: 50;
+right: 0;
+bottom: 0;
+left: 0;
+background-color: rgba(0,0,0,0.5);
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: black;
+}
+
+/* topページ */
+
+.top-text {
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.top-btn {
+  width: 90%;
+  height: 100px;
+}
+
+a.btn--orange {
+  color: #000;
+  background: #ffa500;
+  border-bottom: 5px solid #b84c00;
+  font-weight: bold;
+}
+
+a.btn--orange:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #ff8c00;
+  border-bottom: 2px solid #b84c00;
+}
+
+.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+a.btn--yellow {
+  color: #000;
+  background-color: #fff100;
+  border-bottom: 5px solid #ccc100;
+  font-weight: bold;
+}
+
+a.btn--yellow:hover {
+  margin-top: 3px;
+  color: #000;
+  background: #ffd700;
+  border-bottom: 2px solid #ccc100;
+}
+
+
+
+/* ログイン新規登録ページ */
+
+.sign-up-field {
+  margin-top: 20px;
+  padding-left: 100px;
+}
+
+.sign-in-field {
+  margin-top: 20px;
+  padding-left: 180px;
+}
+
+input.btn--orange {
+  color: #000;
+  background: #ffa500;
+  border-bottom: 5px solid #b84c00;
+  font-weight: bold;
+}
+
+.btn--orange:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #ff8c00;
+  border-bottom: 2px solid #b84c00;
+}
+
+.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+input.btn--yellow {
+  color: #000;
+  background-color: #fff100;
+  border-bottom: 5px solid #ccc100;
+  font-weight: bold;
+}
+
+.btn--yellow:hover {
+  margin-top: 3px;
+  color: #000;
+  background: #ffd700;
+  border-bottom: 2px solid #ccc100;
+}
+
+.bookmark1 {
+  font-size:2em;
+  color: #ffd700;
+}
+
+.bookmark2 {
+  font-size:2em;
+}
+
+.heart1 {
+  color: #ff7fff;
+  font-size: 1.3em;
+}
+
+.heart2 {
+  font-size: 1.3em;
+}
+
+
+/*ボタンの形状*/
+.post-shadow {
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+    transition: all 0.4s;
+}
+
+/*hoverをしたらボックスの影が拡がり色が濃くなる*/
+.post-shadow:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
+    border-color: transparent;
+    transform: scale(1.07, 1.07);
+}
+
+

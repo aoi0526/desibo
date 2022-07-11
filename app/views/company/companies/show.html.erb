@@ -1,37 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-3">
-      <table class="table">
+    <div class="col-md-6 offset-3 border border-company bg-light px-0 mb-5">
+      <%= image_tag @company.get_company_image, size:"200x150", style: "width: 100%; height: auto;" %>
+      <table class="table ">
         <tbody>
           <tr>
-            <td>
-              <div id="company_favorites_<%= @company.id %>">
-                <%= render 'company/favorites/favorite', company: @company %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>プロフィール画像</td>
-            <th><%= image_tag @company.get_company_image, size:"75x75" %></th>
-          </tr>
-          <tr>
-            <td>会社名</td>
+            <th>会社名</th>
             <th><%= @company.name %></th>
           </tr>
           <tr>
-            <td>職業ジャンル</td>
+            <th>職業ジャンル</th>
             <th><%= @company.occupation_genre.name %></th>
           </tr>
           <tr>
-            <td>会社説明</td>
+            <th>会社説明</th>
             <th><%= @company.detail %></th>
           </tr>
           <tr>
-            <td>会社所在地</td>
+            <th>会社所在地</th>
             <th><%= @company.prefecture.name %><%= @company.city %></th>
           </tr>
           <tr>
-            <td>雇用形態</td>
+            <th>雇用形態</th>
             <th>
               <%if @company.employment_status == true %>
                 正社員
@@ -40,15 +30,45 @@
               <% end %>
             </th>
           </tr>
-          <tr>
-            <td>
-              <% if @company == current_company %>
-                <%= link_to "編集する", edit_company_company_path %>
-              <% end %>
-            </td>
-          </tr>
         </tbody>
       </table>
+      <% if @company == current_company %>
+        <div class="text-right pb-3 pr-3">
+        <%= link_to edit_company_company_path do %>
+          <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+        <% end %>
+        </div>
+      <% elsif user_signed_in? %>
+        <div id="company_favorites_<%= @company.id %>" class="mb-3 ml-3">
+          <%= render 'company/favorites/favorite', company: @company %>
+        </div>
+      <% end %>
     </div>
+  </div>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-4 offset-4 post-shadow bg-light border rounded px-0 mb-5">
+
+        <%= image_tag post.post_image, style: "width: 100%; height: auto;" %><br/>
+
+        <p class="pt-3 px-2"><%= post.detail %></p>
+
+        <div class="col-12 d-flex px-0 pb-3 pt-3">
+          <div class="col-6">
+            <% if company_signed_in? %>
+              <i class="fas fa-heart heart1"></i><%= post.likes.count %>
+            <% elsif user_signed_in? %>
+              <div id="post_likes_<%= post.id %>">
+                <%= render 'company/likes/like', post: post %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-6 text-right">
+            <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
   </div>
 </div>
