@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h2 class="text-center mb-5">DM一覧</h2>
+      <% @rooms.each do |room| %>
+        <%= link_to company_room_path(room) do %>
+          <table class="table-borderless">
+            <tr>
+              <td rowspan="2">
+                <%= image_tag room.user.get_user_image, size: "75x75", class: "rounded-circle" %>
+              </td>
+              <td>
+                <font size="5" class="ml-3"><%= room.user.name %>さん</font>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

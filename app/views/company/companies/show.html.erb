@@ -32,6 +32,8 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- companyの時は編集ページ、userの時はお気に入りボタン -->
       <% if @company == current_company %>
         <div class="text-right pb-3 pr-3">
         <%= link_to edit_company_company_path do %>
@@ -43,8 +45,17 @@
           <%= render 'company/favorites/favorite', company: @company %>
         </div>
       <% end %>
+
+      <!-- DM機能 -->
+      <% if user_signed_in? %>
+        <%= form_with model: @room, url: user_rooms_path(company_id: @company.id) do |f| %>
+          <%= f.submit "DM"%>
+        <% end %>
+      <% end %>
     </div>
   </div>
+
+
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-4 offset-4 post-shadow bg-light border rounded px-0 mb-5">

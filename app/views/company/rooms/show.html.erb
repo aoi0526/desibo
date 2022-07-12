@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3 mb-5">
+      <h2><%= @room.user.name %>さんとのDM</h2>
+      <%= form_with model: @message, url: company_room_messages_path(@room), method: :post do |f| %>
+        <div class="input-group">
+          <%= f.text_area :body, class: 'form-control' %>
+          <div class="input-group-append">
+            <%= f.submit '送信', class: 'btn btn-info' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="messages mt-3">
+        <% @messages.each do |message| %>
+
+          <%# ユーザーのメッセージ %>
+          <% unless message.user.nil? %>
+            <div class="d-flex justify-content-start mb-4">
+              <%= image_tag message.user.get_user_image, size: "50x50", class: "rounded-circle" %>
+              <%= simple_format(message.body, class: "says tex-left ml-3 mb-0") %>
+              <small class="d-flex align-items-end ml-1">
+                <%= message.created_at.strftime('%H:%M') %>
+              </small>
+            </div>
+          <% end %>
+
+          <%# 企業のメッセージ %>
+          <% unless message.company.nil? %>
+            <div class="d-flex justify-content-end mb-4">
+              <small class="d-flex align-items-end mr-1">
+                <%= message.created_at.strftime('%H:%M') %>
+              </small>
+              <%= simple_format(message.body, class: "other-user-says text-right mr-3 mb-0") %>
+              <%= image_tag message.company.get_company_image, size:"50x50", class: "rounded-circle" %>
+            </div>
+          <% end %>
+
+        <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+
+

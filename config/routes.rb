@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :companies, only: [:show, :edit, :update] do
       resource :favorites, only: [:create, :destroy]
     end
+    resources :rooms, only: [:index, :show] do
+      resources :messages, only: [:index, :create]
+    end
     patch 'company' => 'companies#update'
     resources :posts, only: [:index, :show, :new, :edit, :update, :create, :destroy] do
       resource :likes, only: [:create, :destroy]
@@ -33,6 +36,9 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :users, only: [:show, :edit, :update]
+    resources :rooms, only: [:index, :show, :create] do
+      resources :messages, only: [:index, :create]
+    end
     patch 'user' => 'user#update'
     resources :posts, only: [:index, :show]
     resources :favorites, only: [:index]
