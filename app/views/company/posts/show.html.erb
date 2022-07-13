@@ -1,23 +1,46 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-3">
-      <%= image_tag @post.company.get_company_image, size:"50x50" %>
+    <div class="col-6 offset-3 bg-light border bg-light rounded px-0 mb-5">
+      <%= link_to company_company_path(@post.company.id) do %>
+        <div class="p-2">
+          <%= image_tag @post.company.get_company_image, size:"50x50", class: "rounded-circle" %>
+          <%= @post.company.name %>
+        </div>
+      <% end %>
 
-      <%= @post.company.name %><br/>
+      <%= image_tag @post.post_image, style: "width: 100%; height: auto;" %><br/>
 
-      <%= image_tag @post.post_image, size:"300x300" %><br/>
+      <p class="pt-3 px-2"><%= @post.detail %></p>
 
-      <%= @post.detail %><br/>
+      <p class="pt-3 px-2"><%= @post.company.prefecture.name %> <%= @post.company.city %></p>
 
-      <%= @post.company.prefecture.name %> <%= @post.company.city %>
+      <div class="col-12 d-flex px-0 pb-3 pt-3">
+        <div class="col-6">
+          <% if company_signed_in? %>
+            <i class="fas fa-heart heart1"></i><%= @post.likes.count %>
+          <% elsif user_signed_in? %>
+            <div id="post_likes_<%= @post.id %>">
+              <%= render 'company/likes/like', post: @post %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-6 text-right">
+          <%= @post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
+        </div>
+      </div>
 
-      <%= @post.created_at.strftime('%Y/%m/%d %-H:%-M') %><br/>
+      <% if company_signed_in? %>
+        <div class="text-right">
+            <%= link_to edit_company_post_path, class: " btn btn--orange btn--cubic btn--shadow mr-2 mb-2" do %>
+            <i class="fas fa-pencil"></i>
+          <% end %>
 
-      💖<%= @post.likes.count %> <br>
+          <%= link_to company_post_path, method: :delete, data: { confirm: '本当に消しますか？'}, class: " btn btn--red btn--cubic btn--shadow mr-2 mb-2" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
 
-      <%= link_to "編集", edit_company_post_path %>
-
-      <%= link_to "削除", company_post_path, method: :delete, data: { confirm: '本当に消しますか？'} %>
+      <% end %>
     </div>
   </div>
 </div>

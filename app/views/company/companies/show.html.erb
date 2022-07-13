@@ -48,9 +48,14 @@
 
       <!-- DM機能 -->
       <% if user_signed_in? %>
+      <div class="text-center mb-3 mt-2" style="width: 100%;">
         <%= form_with model: @room, url: user_rooms_path(company_id: @company.id) do |f| %>
-          <%= f.submit "DM"%>
+          <%= f.button :type => "submit", class: " btn btn--info btn--cubic btn--shadow dm-btn" do %>
+            <i class="fas fa-envelope"></i>
+          <% end %>
         <% end %>
+      </div>
+
       <% end %>
     </div>
   </div>

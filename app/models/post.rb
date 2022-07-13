@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   has_many :commnets
   has_many :likes, dependent: :destroy
   has_many :liked_user, through: :likes, source: :user
+  has_many :notifications, dependent: :destroy
 
   belongs_to :company
 

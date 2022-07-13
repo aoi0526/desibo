@@ -1,3 +1,33 @@
 // Place all the styles related to the companies/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+a.btn--orange {
+  color: #000;
+  background: #ffa500;
+  border-bottom: 5px solid #b84c00;
+  font-weight: bold;
+}
+
+.btn--orange:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #ff8c00;
+  border-bottom: 2px solid #b84c00;
+}
+
+a.btn--red{
+  color: #000;
+  background: #ff0000;
+  border-bottom: 5px solid #8b0000;
+  font-weight: bold;
+}
+
+.btn--red:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #8b0000;
+  border-bottom: 2px solid #8b0000;
+}
+

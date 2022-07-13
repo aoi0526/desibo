@@ -12,6 +12,8 @@ class Company < ApplicationRecord
   has_many :messages
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
+  has_many :active_notifications, class_name: "Notification", foreign_key: "company_visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "company_visited_id", dependent: :destroy
 
   belongs_to :occupation_genre
 

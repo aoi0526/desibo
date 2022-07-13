@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :commnets
   has_many :likes, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "user_visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "user_visited_id", dependent: :destroy
 
 
   has_one_attached :user_image
@@ -17,7 +19,7 @@ class User < ApplicationRecord
   def get_user_image
     (user_image.attached?) ? user_image : 'no-image.jpeg'
   end
-  
+
   def liked_by?(post_id)
     like.where(post_id: post.id).exists?
   end

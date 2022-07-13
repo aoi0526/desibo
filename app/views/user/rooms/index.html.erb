@@ -4,9 +4,9 @@
       <h2 class="text-center mb-5">DM一覧</h2>
       <% @rooms.each do |room| %>
         <%= link_to user_room_path(room) do %>
-          <table class="table-borderless">
+          <table class="table">
             <tr>
-              <td rowspan="2">
+              <td rowspan="2" style="width: 100px;">
                 <%= image_tag room.company.get_company_image, size: "75x75", class: "rounded-circle" %>
               </td>
               <td>

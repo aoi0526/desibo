@@ -17,6 +17,26 @@ svg.btn--orange {
   border-bottom: 2px solid #b84c00;
 }
 
+button.btn--info{
+  color: #000;
+  background: #17a2b8;
+  border-bottom: 5px solid #4682b4;
+  font-weight: bold;
+}
+
+.btn--info:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #4682b4;
+  border-bottom: 2px solid #4682b4;
+}
+
+.dm-btn {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .edit-btn {
   width: 50%;
   margin: 0 auto;
