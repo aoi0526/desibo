@@ -3,7 +3,8 @@
     <% if company_signed_in? %>
       <div class="col-4 offset-1">
         <%= link_to "タイムライン", company_posts_path, class: "mr-5" %>/
-        <%= link_to "新規投稿", new_company_post_path, class: "ml-5" %>
+        <%= link_to "新規投稿", new_company_post_path, class: "mr-5 ml-5" %>/
+        <%= link_to "通知", company_notifications_path, class: "ml-5" %>
       </div>
       <div class="col-2">
         <h1><%= link_to "DESIBO", root_path %></h1>

@@ -19,11 +19,13 @@
         </tbody>
       </table>
       <% if @user == current_user && user_signed_in? %>
-        <div class="text-right pb-3 pr-3">
-        <%= link_to edit_user_user_path do %>
-          <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+        <% if @user.name != "guestuser" %>
+          <div class="text-right pb-3 pr-3">
+            <%= link_to edit_user_user_path do %>
+              <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+            <% end %>
+          </div>
         <% end %>
-        </div>
       <% end %>
     </div>
   </div>

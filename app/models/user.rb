@@ -24,6 +24,15 @@ class User < ApplicationRecord
     like.where(post_id: post.id).exists?
   end
 
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com', prefecture_id: 12, city: '船橋市') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+      user.prefecture_id = 12
+      user.city = "船橋市"
+    end
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 end

@@ -35,11 +35,13 @@
 
       <!-- companyの時は編集ページ、userの時はお気に入りボタン -->
       <% if @company == current_company %>
-        <div class="text-right pb-3 pr-3">
-        <%= link_to edit_company_company_path do %>
-          <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+        <% if @company.name != "guestcompany" %>
+          <div class="text-right pb-3 pr-3">
+            <%= link_to edit_company_company_path do %>
+              <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+            <% end %>
+          </div>
         <% end %>
-        </div>
       <% elsif user_signed_in? %>
         <div id="company_favorites_<%= @company.id %>" class="mb-3 ml-3">
           <%= render 'company/favorites/favorite', company: @company %>

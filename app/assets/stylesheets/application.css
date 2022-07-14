@@ -13,27 +13,34 @@
  *= require_tree .
  *= require_self
  */
+a:hover {
+text-decoration: none;
+}
+a:link { color: black; }
+a:visited { color: black; }
+a:hover {color: black; }
+a:active { color: black; }
+
 
 
 .top-image {
   background-image: url("assets/udonn.jpg");
   background-size:cover;
-  height: 1000px;
+  background-position: center;
+  height: 700px;
 }
 
-.top-link::before{
+.top-image::before{
 content: '';
 position: absolute;
-top: 50;
+height: 700px;
+top: 230px;
 right: 0;
 bottom: 0;
 left: 0;
 background-color: rgba(0,0,0,0.5);
 }
 
-a:link, a:visited, a:hover, a:active {
-  color: black;
-}
 
 /* topページ */
 
@@ -44,6 +51,7 @@ a:link, a:visited, a:hover, a:active {
 
 .top-btn {
   width: 90%;
+  margin: 0 auto;
   height: 100px;
 }
 
@@ -59,6 +67,20 @@ a.btn--orange:hover {
   color: #000;
   background-color: #ff8c00;
   border-bottom: 2px solid #b84c00;
+}
+
+a.btn--gray {
+  color: #000;
+  background: #a9a9a9;
+  border-bottom: 5px solid #696969;
+  font-weight: bold;
+}
+
+a.btn--gray:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #696969;
+  border-bottom: 2px solid #696969;
 }
 
 .btn--shadow {

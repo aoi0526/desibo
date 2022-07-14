@@ -27,6 +27,12 @@ class User::SessionsController < Devise::SessionsController
     root_path
   end
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_user_path(current_user.id)
+  end
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

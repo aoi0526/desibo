@@ -1,5 +1,5 @@
-<div class="container-fulid top-image">
-  <div class="row text-center">
+<div class="container-fulid top-image cimage">
+  <div class="row text-center toprow">
 
     <h3 class="col-4 offset-1 top-text text-white">
       後継者不足に悩んでいる企業様はこちらから
@@ -9,21 +9,31 @@
     </h3>
   </div>
 
-  <div class="row text-center">
-    <div class="col-md-3 pl-5">
+  <div class="row toprow">
+
+    <div class="col-2">
       <%= link_to "新規登録", "/companies/sign_up", class: "btn btn--orange btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-2">
       <%= link_to "ログイン", "/companies/sign_in", class: "btn btn--yellow btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-2">
+      <%= link_to 'ゲストログイン', '/company/guest_sign_in', class: "btn btn--gray btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center", method: :post %>
+    </div>
+
+    <div class="col-2">
       <%= link_to "新規登録", "/users/sign_up", class: "btn btn--orange btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-2">
       <%= link_to "ログイン", "users/sign_in", class: "btn btn--yellow btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
     </div>
+
+    <div class="col-2">
+      <%= link_to 'ゲストログイン', '/user/guest_sign_in', class: "btn btn--gray btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center", method: :post %>
+    </div>
+
   </div>
 </div>

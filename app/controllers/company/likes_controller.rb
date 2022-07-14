@@ -4,6 +4,12 @@ class Company::LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     like = current_user.likes.new(post_id: @post.id)
     like.save
+
+    @post.create_notification_by(current_user, @post.company_id)
+    respond_to do |format|
+      format.html {redirect_to request.referrer}
+      format.js
+    end
   end
 
 
