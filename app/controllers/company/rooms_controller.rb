@@ -1,6 +1,6 @@
 class Company::RoomsController < ApplicationController
   def index
-    @rooms = Room.where(company_id: current_company)
+    @rooms = Room.where(company_id: current_company).order(created_at: :desc)
   end
 
   def show

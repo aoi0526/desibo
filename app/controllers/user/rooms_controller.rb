@@ -1,7 +1,7 @@
 class User::RoomsController < ApplicationController
 
   def index
-    @rooms = Room.where(user_id: current_user)
+    @rooms = Room.where(user_id: current_user).order(created_at: :desc)
   end
 
   def create

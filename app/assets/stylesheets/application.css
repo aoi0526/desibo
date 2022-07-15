@@ -95,6 +95,20 @@ a.btn--orange:hover {
   border-bottom: 2px solid #b84c00;
 }
 
+a.btn--red {
+  color: #000;
+  background: #ff0000;
+  border-bottom: 5px solid #800000;
+  font-weight: bold;
+}
+
+a.btn--red:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #800000;
+  border-bottom: 2px solid #800000;
+}
+
 a.btn--gray {
   color: #000;
   background: #a9a9a9;
@@ -258,4 +272,8 @@ input.btn--yellow {
   border-right: 18px solid #7fff7f;
   -webkit-transform: rotate(145deg);
   transform: rotate(145deg);
+}
+
+.form-control {
+  width: 100%;
 }
