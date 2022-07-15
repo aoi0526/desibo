@@ -67,7 +67,11 @@
     <% @posts.each do |post| %>
       <div class="col-4 offset-4 post-shadow bg-light border rounded px-0 mb-5">
 
-        <%= image_tag post.post_image, style: "width: 100%; height: auto;" %><br/>
+        <div class="slider">
+          <% post.post_images.each do |image| %>
+            <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
+          <% end %>
+        </div>
 
         <p class="pt-3 px-2"><%= post.detail %></p>
 

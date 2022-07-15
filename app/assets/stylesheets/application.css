@@ -41,6 +41,29 @@ left: 0;
 background-color: rgba(0,0,0,0.5);
 }
 
+/*.toprow {*/
+/*  padding-top: 200px;*/
+/*}*/
+
+
+/* slick前後ボタン */
+
+.slick-prev
+{
+    left: 10px;
+}
+.slick-next
+{
+    right: 10px;
+}
+
+.slider .slick-prev,
+.slider .slick-next
+{
+    /* スライド画像の後ろに隠れないようにする */
+    z-index: 100;
+}
+
 
 /* topページ */
 
@@ -54,6 +77,9 @@ background-color: rgba(0,0,0,0.5);
   margin: 0 auto;
   height: 100px;
 }
+
+
+/* 各ページのボタン */
 
 a.btn--orange {
   color: #000;
@@ -104,8 +130,6 @@ a.btn--yellow:hover {
 
 
 
-/* ログイン新規登録ページ */
-
 .sign-up-field {
   margin-top: 20px;
   padding-left: 100px;
@@ -149,6 +173,8 @@ input.btn--yellow {
   border-bottom: 2px solid #ccc100;
 }
 
+
+/* ブックマークデザイン */
 .bookmark1 {
   font-size:2em;
   color: #ffd700;
@@ -168,7 +194,7 @@ input.btn--yellow {
 }
 
 
-/*ボタンの形状*/
+/*投稿*/
 .post-shadow {
     background: #fff;
     border: 1px solid #ccc;
@@ -184,11 +210,13 @@ input.btn--yellow {
 .post-shadow:hover {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
     border-color: transparent;
-    transform: scale(1.07, 1.07);
+    transform: scale(1.05, 1.05);
 }
 
 
-/* 自分のメッセージの吹き出し*/
+
+
+/* DM機能　自分のメッセージの吹き出し*/
 .says {
   float: left;
   position: relative;

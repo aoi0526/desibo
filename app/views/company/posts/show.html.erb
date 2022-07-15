@@ -8,9 +8,12 @@
         </div>
       <% end %>
 
-      <% @post.post_images.each do |image| %>
-        <%= image_tag image, style: "width: 100%; height: auto;" %>
-      <% end %>
+      <div class="slider">
+        <% @post.post_images.each do |image| %>
+          <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
+        <% end %>
+      </div>
+
 
       <p class="pt-3 px-2"><%= @post.detail %></p>
 
