@@ -6,7 +6,7 @@
         <table class="table border-bottom">
           <tr>
             <th><%= f.label "画像" %></th>
-            <th><%= f.file_field :post_image %></th>
+            <th><%= f.file_field :post_images, multiple: true %></th>
           </tr>
           <tr>
             <th><%= f.label "投稿内容" %></th>

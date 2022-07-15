@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   belongs_to :company
 
-  has_one_attached :post_image
+  has_many_attached :post_images
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?

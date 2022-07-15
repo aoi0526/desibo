@@ -11,7 +11,9 @@
       <% end %>
 
       <%= link_to company_post_path(post.id) do %>
-        <%= image_tag post.post_image, style: "width: 100%; height: auto;" %><br/>
+        <% post.post_images.each do |image| %>
+          <%= image_tag image, style: "width: 100%; height: auto;" %>
+        <% end %>
 
         <p class="pt-3 px-2"><%= post.detail %></p>
 
