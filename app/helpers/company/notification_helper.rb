@@ -1,18 +1,21 @@
 module Company::NotificationHelper
 
   def notification_form(notification)
-	  @visiter = notification.user_visiter
-	  #notification.actionがfollowかlikeかcommentか
 	  case notification.action
 	    when "like" then
-	      tag.a(notification.user_visiter.name, href:user_user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:company_post_path(notification.post_id), style:"font-weight: bold;")+"にいいねしました!"
-	    when "message" then
-	    	# @comment = Comment.find_by(id: @visiter_comment)&.content
-	    	# tag.a(@visiter.name, href:users_user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:users_item_path(notification.item_id), style:"font-weight: bold;")+"にコメントしました"
+	      tag.a(notification.user_visiter.name, href:user_user_path(notification.user_visiter_id), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:company_post_path(notification.post_id), style:"font-weight: bold;")+"にいいねしました!"
+	    when "user_message" then
+	    	tag.a(notification.user_visiter.name, href:user_user_path(notification.user_visiter_id), style:"font-weight: bold;")+"が"+tag.a('あなたにメッセージ', href:company_room_path(notification.message.room_id), style:"font-weight: bold;")+"を送りました!"
+	    when "company_message" then
+	    	tag.a(notification.company_visiter.name, href:company_company_path(notification.company_visiter_id), style:"font-weight: bold;")+"が"+tag.a('あなたにメッセージ', href:user_room_path(notification.message.room_id), style:"font-weight: bold;")+"を送りました!"
 	  end
   end
 
   def company_unchecked_notifications
     @notifications = current_company.passive_notifications.where(checked: false)
+  end
+
+  def user_unchecked_notifications
+    @notifications = current_user.passive_notifications.where(checked: false)
   end
 end

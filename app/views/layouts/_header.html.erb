@@ -1,36 +1,55 @@
 <div class="container-fulid">
   <div class="row text-center mb-3 pt-5">
+    <!--company側-->
     <% if company_signed_in? %>
+
       <div class="col-4 offset-1">
         <%= link_to "タイムライン", company_posts_path, class: "mr-5" %>/
         <%= link_to "新規投稿", new_company_post_path, class: "mr-5 ml-5" %>/
-        <%= link_to "通知", company_notifications_path, class: "ml-5" %>
-        <% if company_unchecked_notifications.any? %>
-            <i class="fa fa-circle" style="color: red;"></i>
-        <% end %>
+        <%= link_to "マイページ", company_company_path(current_company.id), class: "ml-5" %>
       </div>
       <div class="col-2">
         <h1><%= link_to "DESIBO", root_path %></h1>
       </div>
       <div class="col-4">
-        <%= link_to "マイページ", company_company_path(current_company.id), class: "mr-5" %>/
-        <%= link_to "DM", company_rooms_path, class: "mr-5 ml-5" %>/
+        <%= link_to "DM", company_rooms_path, class: "mr-5" %>/
+        <% if company_unchecked_notifications.any? %>
+          <%= link_to "通知", company_notifications_path, class: "ml-5" %>
+          <i class="fa fa-circle mr-5" style="color: red;"></i>
+        <% else %>
+          <%= link_to "通知", company_notifications_path, class: "ml-5 mr-5" %>
+        <% end %>/
         <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "ml-5" %>
       </div>
+
+    <!--user側-->
     <% elsif user_signed_in? %>
+
       <div class="col-4 offset-1">
         <%= link_to "タイムライン", company_posts_path, class: "mr-5" %>/
-        <%= link_to "気になる", user_favorites_path, class: "ml-5" %>
+        <%= link_to "気になる", user_favorites_path, class: "ml-5 mr-5" %>/
+        <%= link_to "マイページ", user_user_path(current_user.id), class: "ml-5" %>
       </div>
+
       <div class="col-2">
         <h1><%= link_to "DESIBO", root_path %></h1>
       </div>
-      <div class="col-4 offset-1">
-        <%= link_to "マイページ", user_user_path(current_user.id), class: "mr-5" %>/
-        <%= link_to "DM", user_rooms_path, class: "mr-5 ml-5" %>/
+
+      <div class="col-4">
+        <%= link_to "DM", user_rooms_path, class: "mr-5" %>/
+
+        <% if user_unchecked_notifications.any? %>
+           <%= link_to "通知", user_notifications_path, class: "ml-5" %>
+          <i class="fa fa-circle mr-5" style="color: red;"></i>
+        <% else %>
+          <%= link_to "通知", user_notifications_path, class: "ml-5 mr-5" %>
+        <% end %>/
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "ml-5" %>
       </div>
+
+    <!--非ログイン時-->
     <% else %>
+
       <div class="col-4 offset-1">
         <div><%= link_to "タイムライン", company_posts_path %></div>
       </div>
@@ -39,14 +58,16 @@
         <h1><%= link_to "DESIBO", root_path %></h1>
       </div>
 
-      <div class="col-4 offset-1">
+      <div class="col-4">
         <div><%= link_to "DESIBOとは？", about_path %></div>
       </div>
+
     <% end %>
   </div>
 
   <div class="row mb-5">
     <div class="col-6 offset-3 d-flex justify-content-center">
+      <!--都道府県検索フォーム-->
       <%= form_with url: prefecture_search_path, method: :get do |f| %>
         <div class="input-group mr-3">
           <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "---都道府県で検索---", class: "form-control" %>
@@ -57,6 +78,7 @@
           </div>
         </div>
       <% end %>
+      <!--職種検索フォーム-->
       <%= form_with url: occupation_search_path, method: :get do |f| %>
         <div class="input-group ml-3">
           <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "----職種で検索----", class: 'form-control' %>

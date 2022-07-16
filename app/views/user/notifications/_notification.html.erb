@@ -1,0 +1,10 @@
+<% company_visiter = notification.company_visiter %>
+<% message = notification.message %>
+
+
+<div class="user-view">
+  <%= link_to company_company_path(notification.company_visiter) do %>
+    <%= image_tag company_visiter.get_company_image, size: "50x50", class:"rounded-circle" %>
+  <% end %>
+  <%= notification_form(notification) %><span class="text-secondary ml-2"><%= " ...#{time_ago_in_words(notification.created_at)}前" %></span>
+</div>

@@ -6,7 +6,13 @@ class Company::MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    room = Room.find(params[:room_id])
     if @message.save
+      @message.company_create_notification_message!(current_company, room.user_id, @message.id)
+      respond_to do |format|
+        format.html {redirect_to request.referrer}
+        format.js
+      end
       redirect_to company_room_path(params[:room_id])
     else
       @room = Room.find(params[:room_id])
