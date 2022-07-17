@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-4">
+      <%= form_with model: @occupation_genre, url: admin_occupation_genres_path do |f| %>
+        <div class="input-group mb-3">
+          <%= f.text_field :name, placeholder: "職種を入力してください", class: "form-control" %>
+          <div class="input-group-append">
+            <%= f.button :type => "submit", class: " btn btn-info" do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              職業名
+            </th>
+          </tr>
+        </thead>
+        <% @occupation_genres.each do |occupation_genre| %>
+          <tr>
+            <th>
+              <%= occupation_genre.name %>
+            </th>
+            <th>
+              <%= link_to admin_occupation_genre_path(occupation_genre.id), method: :delete, data: { confirm: '本当に消しますか？'}, class: " btn btn--red btn--cubic btn--shadow mr-2 mb-2" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

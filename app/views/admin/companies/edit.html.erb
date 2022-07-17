@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3 border bg-light px-0">
+      <%= form_with model: @company, url: admin_company_path do |f| %>
+        <table class="table border-bottom">
+          <tbody>
+            <tr>
+              <th>画像</th>
+              <th><%= f.file_field :company_image %></th>
+            </tr>
+            <tr>
+              <th>会社名</th>
+              <th><%= f.text_field :name %></th>
+            </tr>
+            <tr>
+              <th>会社説明</th>
+              <th><%= f.text_area :detail %></th>
+            </tr>
+            <tr>
+              <th>職種</th>
+              <th><%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "--選択してください--" %></th>
+            </tr>
+            <tr>
+              <th>勤務地</th>
+              <th>
+                <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--都道府県--" %>
+                <%= f.text_field :city, placeholder: "○○市" %>
+              </th>
+            </tr>
+            <tr>
+              <th>雇用形態</th>
+              <th>
+                <%= f.radio_button :employment_status, :true, checked: true %>
+                <%= f.label :employment_status, "正社員" %><br>
+                <%= f.radio_button :employment_status, :false %>
+                <%= f.label :employment_status, "アルバイト/パート" %>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center">
+          <%= f.button :type => "submit", class: " btn btn--green btn--cubic btn--shadow edit-btn mb-3" do %>
+            <i class="fas fa-check"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -19,4 +19,9 @@ OccupationGenre.create!(
   ]
 )
 
+Admin.create!(
+   email: 'a@com',
+   password: 'adminmin'
+)
+
 

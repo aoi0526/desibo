@@ -30,46 +30,35 @@
               <% end %>
             </th>
           </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <th>
+              <% if @company.is_deleted? %>
+                退会済み
+              <% else %>
+                登録中
+              <% end %>
+            </th>
+          </tr>
         </tbody>
       </table>
-
-      <!-- companyの時は編集ページ、userの時はお気に入りボタン -->
-      <% if @company == current_company %>
-        <% if @company.name != "guestcompany" %>
-          <div class="text-right pb-3 pr-3">
-            <%= link_to edit_company_company_path do %>
-              <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
-            <% end %>
-          </div>
-        <% end %>
-      <% elsif user_signed_in? %>
-        <div id="company_favorites_<%= @company.id %>" class="mb-3 ml-3">
-          <%= render 'company/favorites/favorite', company: @company %>
-        </div>
-      <% end %>
-
-      <!-- DM機能 -->
-      <% if user_signed_in? %>
-      <div class="text-center mb-3 mt-2" style="width: 100%;">
-        <%= form_with model: @room, url: user_rooms_path(company_id: @company.id) do |f| %>
-          <%= f.button :type => "submit", class: " btn btn--info btn--cubic btn--shadow dm-btn" do %>
-            <i class="fas fa-envelope"></i>
-          <% end %>
+      <div class="text-right pb-3 pr-3">
+        <%= link_to edit_admin_company_path do %>
+          <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
         <% end %>
       </div>
-      <% end %>
     </div>
   </div>
 
   <div class="row">
     <% @posts.each do |post| %>
-      <% link_to company_post_path do %>
-        <div class="col-4 offset-4 post-shadow bg-light border rounded px-0 mb-5">
-          <div class="slider">
-            <% post.post_images.each do |image| %>
-              <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
-            <% end %>
-          </div>
+      <div class="col-4 offset-4 post-shadow bg-light border rounded px-0 mb-5">
+        <div class="slider">
+          <% post.post_images.each do |image| %>
+            <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
+          <% end %>
+        </div>
+        <%= link_to admin_post_path(post) do %>
           <p class="pt-3 px-2"><%= post.detail %></p>
           <div class="col-12 d-flex px-0 pb-3 pt-3">
             <div class="col-6">
@@ -85,8 +74,8 @@
               <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

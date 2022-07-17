@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <% @companies.each do |company| %>
+      <div class="col-4 offset-4 post-shadow border bg-light rounded px-0 mb-5">
+        <%= link_to admin_company_path(company.id) do %>
+          <%= image_tag company.get_company_image, style: "width: 100%; height: auto;" %>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>会社名</th>
+                  <th><%= company.name %></th>
+                </tr>
+                <tr>
+                  <th>職業ジャンル</th>
+                  <th><%= company.occupation_genre.name %></th>
+                </tr>
+                <tr>
+                  <th>会社所在地</th>
+                  <th><%= company.prefecture.name %><%= company.city %></th>
+                </tr>
+                <tr>
+                  <th>雇用形態</th>
+                  <th>
+                    <%if company.employment_status == true %>
+                      正社員
+                    <% else %>
+                      アルバイト/パート
+                    <% end %>
+                  </th>
+                </tr>
+                <tr>
+                  <th>会員ステータス</th>
+                  <th>
+                    <% if company.is_deleted? %>
+                      退会済み
+                    <% else %>
+                       登録中
+                    <% end %>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

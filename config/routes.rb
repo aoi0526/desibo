@@ -1,6 +1,23 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'occupation_genres/index'
+  end
+  namespace :admin do
+    get 'posts/index'
+    get 'posts/destroy'
+  end
+  namespace :admin do
+    get 'companies/index'
+    get 'companies/show'
+    get 'companies/edit'
+  end
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
   namespace :user do
     get 'notification/index'
   end
@@ -69,6 +86,12 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
 
+  namespace :admin do
+    resources :users, only: [:index, :edit, :update, :show]
+    resources :companies, only: [:index, :edit, :update, :show]
+    resources :posts, only: [:index, :show, :destroy]
+    resources :occupation_genres, only: [:index, :create, :destroy]
+  end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
