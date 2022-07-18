@@ -34,7 +34,7 @@ a:active { color: black; }
 content: '';
 position: absolute;
 height: 700px;
-top: 230px;
+top: 198px;
 right: 0;
 bottom: 0;
 left: 0;
@@ -96,6 +96,13 @@ a.btn--orange:hover {
 }
 
 a.btn--red {
+  color: #000;
+  background: #ff0000;
+  border-bottom: 5px solid #800000;
+  font-weight: bold;
+}
+
+svg.btn--red {
   color: #000;
   background: #ff0000;
   border-bottom: 5px solid #800000;

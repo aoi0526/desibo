@@ -15,6 +15,15 @@ class User::UsersController < ApplicationController
     redirect_to user_user_path(current_user)
   end
 
+  def withdraw
+    @user = User.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_deleted: true)
+    # セッション情報を全て削除
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def user_params

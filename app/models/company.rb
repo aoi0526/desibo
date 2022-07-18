@@ -18,6 +18,11 @@ class Company < ApplicationRecord
   belongs_to :occupation_genre
 
   has_one_attached :company_image
+  
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   def get_company_image
     (company_image.attached?) ? company_image : 'no-image.jpeg'

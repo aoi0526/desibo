@@ -13,6 +13,15 @@ class Company::CompaniesController < ApplicationController
     @company.update(company_params)
     redirect_to company_company_path(current_company)
   end
+  
+  def withdraw
+    @company = Company.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @company.update(is_deleted: true)
+    # セッション情報を全て削除
+    reset_session
+    redirect_to root_path
+  end
 
   private
 

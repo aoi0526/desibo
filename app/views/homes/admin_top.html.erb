@@ -1,0 +1,18 @@
+<div class="container">
+
+  <div class="row text-center toprow">
+    <h3 class="col-6 offset-3 top-text">
+      管理者topページ
+    </h3>
+  </div>
+
+  <div class="row">
+    <div class="col-3 offset-3">
+      <%= link_to "ログイン", "/admin/sign_up", class: "btn btn--yellow btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center" %>
+    </div>
+    <div class="col-3">
+      <%= link_to "ゲストログイン", "/admin/guest_sign_in", class: "btn btn--gray btn--cubic btn--shadow top-btn d-flex align-items-center justify-content-center", method: :post %>
+    </div>
+  </div>
+
+</div>

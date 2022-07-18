@@ -21,6 +21,6 @@ class Admin::CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:email, :name, :detail, :occupation_genre_id, :prefecture_id, :city, :employment_status, :company_image)
+    params.require(:company).permit(:email, :name, :detail, :occupation_genre_id, :prefecture_id, :city, :employment_status, :company_image, :is_deleted)
   end
 end

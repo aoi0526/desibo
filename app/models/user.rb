@@ -16,6 +16,12 @@ class User < ApplicationRecord
 
   has_one_attached :user_image
 
+
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
   def get_user_image
     (user_image.attached?) ? user_image : 'no-image.jpeg'
   end

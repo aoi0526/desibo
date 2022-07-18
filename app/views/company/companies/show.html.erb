@@ -40,6 +40,9 @@
             <%= link_to edit_company_company_path do %>
               <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
             <% end %>
+            <%= link_to company_unsubscribe_path do %>
+              <i class="fas fa-sign-out-alt btn btn--red btn--cubic btn--shadow"></i>
+            <% end %>
           </div>
         <% end %>
       <% elsif user_signed_in? %>

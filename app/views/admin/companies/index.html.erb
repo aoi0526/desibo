@@ -32,9 +32,9 @@
                   <th>会員ステータス</th>
                   <th>
                     <% if company.is_deleted? %>
-                      退会済み
+                      <p class="text-danger">退会済み</p>
                     <% else %>
-                       登録中
+                      <p class="text-success">登録中</p>
                     <% end %>
                   </th>
                 </tr>

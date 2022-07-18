@@ -36,6 +36,15 @@
                 <%= f.label :employment_status, "アルバイト/パート" %>
               </th>
             </tr>
+            <tr>
+              <th>登録ステータス</th>
+              <th>
+                <%= f.radio_button :is_deleted, :true %>
+                <%= f.label :is_deleted, "退会済み" %><br>
+                <%= f.radio_button :is_deleted, :false %>
+                <%= f.label :is_deleted, "登録中" %>
+              </th>
+            </tr>
           </tbody>
         </table>
         <div class="text-center">

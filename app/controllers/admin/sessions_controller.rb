@@ -19,13 +19,19 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # protected
-  
+
   def after_sign_in_path_for(resource)
     admin_posts_path
   end
- 
+
   def after_sign_out_path_for(resource_or_scope)
-    new_admin_session_path
+    admin_top_path
+  end
+
+  def guest_sign_in
+    admin = Admin.guest
+    sign_in admin
+    redirect_to admin_posts_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

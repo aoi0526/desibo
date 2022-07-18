@@ -1,31 +1,8 @@
 Rails.application.routes.draw do
 
-
-  namespace :admin do
-    get 'occupation_genres/index'
-  end
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/destroy'
-  end
-  namespace :admin do
-    get 'companies/index'
-    get 'companies/show'
-    get 'companies/edit'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :user do
-    get 'notification/index'
-  end
-  namespace :company do
-    get 'notification/index'
-  end
   root 'homes#top'
-  get 'about' => 'homesabout'
+  get 'about' => 'homes#about'
+  get 'admin_top' => 'homes#admin_top'
   get 'prefecture_search' => 'searches#prefecture_search'
   get 'occupation_search' => 'searches#occupation_search'
 
@@ -44,6 +21,8 @@ Rails.application.routes.draw do
     resources :companies, only: [:show, :edit, :update] do
       resource :favorites, only: [:create, :destroy]
     end
+    get '/companies/:id/unsubscribe' => 'companies#unsubscribe', as: 'unsubscribe'
+    patch '/companies/:id/withdraw' => 'companies#withdraw', as: 'withdraw'
     resources :rooms, only: [:index, :show] do
       resources :messages, only: [:index, :create]
     end
@@ -69,6 +48,8 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :users, only: [:show, :edit, :update]
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :rooms, only: [:index, :show, :create] do
       resources :messages, only: [:index, :create]
     end
@@ -85,6 +66,10 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
+
+  devise_scope :admin do
+    post 'admin/guest_sign_in', to: 'admin/sessions#guest_sign_in'
+  end
 
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :show]
