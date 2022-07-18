@@ -1,5 +1,5 @@
 <div class="container-fulid">
-  <div class="row text-center mb-3 pt-5">
+  <div class="row text-center pt-3">
     <!--company側-->
     <% if company_signed_in? %>
 
@@ -82,8 +82,8 @@
     <% end %>
   </div>
 
-  <div class="row mb-5">
-    <div class="col-6 offset-3 d-flex justify-content-center">
+  <div class="row pb-3">
+    <div class="col-4 offset-7 d-flex justify-content-center">
       <!--都道府県検索フォーム-->
       <%= form_with url: prefecture_search_path, method: :get do |f| %>
         <div class="input-group mr-3">

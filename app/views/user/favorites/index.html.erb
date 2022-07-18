@@ -1,41 +1,44 @@
-<div class-"container">
+<div class="container">
   <div class="row">
-    <% @favorite_companies.each do |company| %>
-    <div class="col-4 offset-4 bg-light post-shadow border bg-light rounded px-0 mb-5">
 
-      <%= link_to company_company_path(company.id) do %>
+    <% if @favorites.exists? %>
+      <div class="col-4 offset-4 bg-light post-shadow border bg-light rounded px-0 mb-5 mt-5">
+        <% @favorite_companies.each do |company| %>
+            <%= link_to company_company_path(company.id) do %>
 
-      <%= image_tag company.get_company_image, style: "width: 100%; height: auto;" %>
+              <%= image_tag company.get_company_image, style: "width: 100%; height: auto;" %>
 
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="pl-5">会社名</th>
-            <th><%= company.name %></th>
-          </tr>
-          <tr>
-            <th class="pl-5">職種</th>
-            <th><%= company.occupation_genre.name %></th>
-          </tr>
-          <tr>
-            <th class="pl-5">勤務地</th>
-            <th><%= company.prefecture.name %> <%= company.city %></th>
-          </tr>
-          <tr>
-            <th class="pl-5">雇用形態</th>
-            <th>
-              <% if company.employment_status == true %>
-                正社員
-              <% else %>
-                アルバイト
-              <% end %>
-            </th>
-          </tr>
-        </tbody>
-      </table>
-
-      <% end %>
-    </div>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th class="pl-5">会社名</th>
+                    <th><%= company.name %></th>
+                  </tr>
+                  <tr>
+                    <th class="pl-5">職種</th>
+                    <th><%= company.occupation_genre.name %></th>
+                  </tr>
+                  <tr>
+                    <th class="pl-5">勤務地</th>
+                    <th><%= company.prefecture.name %> <%= company.city %></th>
+                  </tr>
+                  <tr>
+                    <th class="pl-5">雇用形態</th>
+                    <th>
+                      <% if company.employment_status == true %>
+                        正社員
+                      <% else %>
+                        アルバイト
+                      <% end %>
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
+            <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-white text-center mt-5">登録している会社は0件です</p>
     <% end %>
     </div>
   </div>

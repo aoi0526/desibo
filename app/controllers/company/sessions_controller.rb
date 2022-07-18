@@ -18,6 +18,20 @@ class Company::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def after_sign_in_path_for(resource)
+    company_company_path(current_company.id)
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
+
+  def guest_sign_in
+    company = Company.guest
+    sign_in company
+    redirect_to company_company_path(current_company.id)
+  end
+
   protected
 
 
@@ -32,21 +46,6 @@ class Company::SessionsController < Devise::SessionsController
         flash[:notice] = "項目を入力してください"
       end
     end
-  end
-
-
-  def after_sign_in_path_for(resource)
-    company_company_path(current_company.id)
-  end
-
-  def after_sign_out_path_for(resource_or_scope)
-    root_path
-  end
-
-  def guest_sign_in
-    company = Company.guest
-    sign_in company
-    redirect_to company_company_path(current_company.id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

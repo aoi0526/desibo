@@ -6,5 +6,10 @@
   <%= link_to company_company_path(notification.company_visiter) do %>
     <%= image_tag company_visiter.get_company_image, size: "50x50", class:"rounded-circle" %>
   <% end %>
-  <%= notification_form(notification) %><span class="text-secondary ml-2"><%= " ...#{time_ago_in_words(notification.created_at)}前" %></span>
+  <span class="text-white">
+    <%= notification_form(notification) %>
+  </span>
+  <span class="text-white ml-2">
+    <%= " ...#{time_ago_in_words(notification.created_at)}前" %>
+  </span>
 </div>

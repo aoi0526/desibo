@@ -18,6 +18,21 @@ class User::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def after_sign_in_path_for(resource)
+    user_user_path(current_user.id)
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
+
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_user_path(current_user.id)
+  end
+
+
   protected
 
   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
@@ -31,21 +46,6 @@ class User::SessionsController < Devise::SessionsController
         flash[:notice] = "項目を入力してください"
       end
     end
-  end
-
-
-  def after_sign_in_path_for(resource)
-    user_user_path(current_user.id)
-  end
-
-  def after_sign_out_path_for(resource_or_scope)
-    root_path
-  end
-
-  def guest_sign_in
-    user = User.guest
-    sign_in user
-    redirect_to user_user_path(current_user.id)
   end
 
 

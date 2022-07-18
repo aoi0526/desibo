@@ -1,22 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-3">
+  <div class="row mt-5">
+    <div class="col-6 offset-3 text-center mt-5">
+      <h3 class="text-white">新規投稿フォーム</h3>
+    </div>
+    <div class="col-md-6 offset-3 border bg-light px-0 mt-5">
       <%= form_with model: @post, url: company_posts_path do |f| %>
 
-        <div class="field">
-          <%= f.label "画像" %><br/>
-          <%= f.file_field :post_images, multiple: true %>
-        </div>
+        <table class="table border-bottom">
+          <tr>
+            <th><%= f.label "画像" %></th>
+            <th><%= f.file_field :post_images, multiple: true %></th>
+          </tr>
+          <tr>
+            <th><%= f.label "投稿内容" %></th>
+            <th><%= f.text_area :detail %></th>
+          </tr>
 
-        <div class="field">
-          <%= f.label "投稿内容" %><br/>
-          <%= f.text_area :detail %>
+        </table>
+        <div class="text-center">
+          <%= f.button :type => "submit", class: " btn btn--green btn--cubic btn--shadow edit-btn mb-3" do %>
+            <i class="fas fa-check"></i>
+          <% end %>
         </div>
-
-        <div class="actions">
-          <%= f.submit "投稿" %>
-        </div>
-
       <% end %>
     </div>
   </div>

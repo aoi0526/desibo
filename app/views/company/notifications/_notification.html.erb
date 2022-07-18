@@ -6,5 +6,10 @@
   <%= link_to user_user_path(notification.user_visiter) do %>
     <%= image_tag user_visiter.get_user_image, size: "50x50", class:"rounded-circle" %>
   <% end %>
-  <%= notification_form(notification) %><span class="text-secondary ml-2"><%= " ...#{time_ago_in_words(notification.created_at)}前" %></span>
+  <span class="text-white">
+    <%= notification_form(notification) %>
+  </span>
+  <span class="text-light ml-2">
+    <%= " ...#{time_ago_in_words(notification.created_at)}前" %>
+  </span>
 </div>

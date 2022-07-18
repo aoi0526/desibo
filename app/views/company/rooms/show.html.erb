@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 offset-3 mb-5">
-      <h2><%= @room.user.name %>さんとのDM</h2>
+  <div class="row mt-5">
+    <div class="col-6 offset-3">
+      <h2 class="text-white mb-5"><%= @room.user.name %>さんとのDM</h2>
       <%= form_with model: @message, url: company_room_messages_path(@room), method: :post, data: {remote: true} do |f| %>
         <div class="input-group">
           <%= f.text_area :body, class: 'form-control' %>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6 offset-3 mb-3">
+    <div class="col-6 offset-3 mb-3 mt-5">
       <div id="company_messages_<% @message.id %>">
         <%= render 'company/messages/message', message: @message %>
       </div>

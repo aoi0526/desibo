@@ -10,13 +10,13 @@
                 <%= image_tag room.company.get_company_image, size: "75x75", class: "rounded-circle" %>
               </td>
               <td>
-                <font size="5"><%= room.company.name %>さん</font><br>
+                <font size="5" class="text-white"><%= room.company.name %>さん</font><br>
                 <!-- そのroomの最後のメッセージを表示 -->
-                <font size="4" class="ml-4 text-secondary"><%= Message.find_by(id: room.messages.last)&.body %></font>
+                <font size="4" class="ml-4 text-white"><%= Message.find_by(id: room.messages.last)&.body %></font>
               </td>
               <td>
                 <!-- 最後のメッセージがどのくらい前に送られたか表示する -->
-                <p class="text-secondary text-right pt-4 mb-0"><%= "#{time_ago_in_words(room.messages.last.created_at)}前" %></p>
+                <p class="text-white text-right pt-4 mb-0"><%= "#{time_ago_in_words(room.messages.last.created_at)}前" %></p>
               </td>
             </tr>
           </table>

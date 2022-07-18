@@ -2,25 +2,29 @@
   <div class="row">
     <div class="col-6 offset-3">
       <h2 class="text-center mb-5">DM一覧</h2>
-      <% @rooms.each do |room| %>
-        <%= link_to company_room_path(room) do %>
-          <table class="table">
-            <tr>
-              <td style="width: 100px;">
-                <%= image_tag room.user.get_user_image, size: "75x75", class: "rounded-circle" %>
-              </td>
-              <td>
-                <font size="5"><%= room.user.name %>さん</font><br>
-                <!-- そのroomの最後のメッセージを表示 -->
-                <font size="4" class="ml-4 text-secondary"><%= Message.find_by(id: room.messages.last)&.body %></font>
-              </td>
-              <td>
-                <!-- 最後のメッセージがどのくらい前に送られたか表示する -->
-                <p class="text-secondary text-right pt-4 mb-0"><%= "#{time_ago_in_words(room.messages.last.created_at)}前" %></p>
-              </td>
-            </tr>
-          </table>
+      <% if @rooms.exists? %>
+        <% @rooms.each do |room| %>
+          <%= link_to company_room_path(room) do %>
+            <table class="table">
+              <tr>
+                <td style="width: 100px;">
+                  <%= image_tag room.user.get_user_image, size: "75x75", class: "rounded-circle" %>
+                </td>
+                <td>
+                  <font size="5" class="text-white"><%= room.user.name %>さん</font><br>
+                  <!-- そのroomの最後のメッセージを表示 -->
+                  <font size="4" class="ml-4 text-white"><%= Message.find_by(id: room.messages.last)&.body %></font>
+                </td>
+                <td>
+                  <!-- 最後のメッセージがどのくらい前に送られたか表示する -->
+                  <p class="text-light text-right pt-4 mb-0"><%= "#{time_ago_in_words(room.messages.last.created_at)}前" %></p>
+                </td>
+              </tr>
+            </table>
+          <% end %>
         <% end %>
+      <% else %>
+        <p class="text-white text-center mt-5">まだメッセージははありません</p>
       <% end %>
     </div>
   </div>
