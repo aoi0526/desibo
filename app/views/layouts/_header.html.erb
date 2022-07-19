@@ -1,5 +1,5 @@
-<div class="container-fulid">
-  <div class="row text-center pt-3">
+<div class="container-fulid" style="width: 100%;">
+  <div class="row header-row text-center pt-3">
     <!--company側-->
     <% if company_signed_in? %>
 
@@ -82,13 +82,13 @@
     <% end %>
   </div>
 
-  <div class="row pb-3">
-    <div class="col-4 offset-7 d-flex justify-content-center">
+  <div class="row pb-2">
+    <div class="col-6 offset-6 d-flex justify-content-center">
       <!--都道府県検索フォーム-->
       <%= form_with url: prefecture_search_path, method: :get do |f| %>
-        <div class="input-group mr-3">
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "---都道府県で検索---", class: "form-control" %>
-          <div class="input-group-append">
+        <div class="f-group mr-3">
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "---都道府県で検索---", class: "form" %>
+          <div class="f-group-append">
             <%= f.button :type => "submit" do %>
               <i class="fas fa-search"></i>
             <% end %>
@@ -97,9 +97,9 @@
       <% end %>
       <!--職種検索フォーム-->
       <%= form_with url: occupation_search_path, method: :get do |f| %>
-        <div class="input-group ml-3">
-          <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "----職種で検索----", class: 'form-control' %>
-          <div class="input-group-append">
+        <div class="f-group ml-3">
+          <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "----職種で検索----", class: 'form' %>
+          <div class="f-group-append">
             <%= f.button :type => "submit" do %>
               <i class="fas fa-search"></i>
             <% end %>

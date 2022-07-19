@@ -26,6 +26,7 @@ body {
   background-image: url("assets/kawa.jpg");
   background-attachment: fixed;
   background-size: cover;
+  overflow-x: hidden;
 }
 
 .container::before{
@@ -38,24 +39,6 @@ body {
   bottom: 0;
   left: 0;
   background-color: rgba(0,0,0,0.5);
-}
-
-.top-image {
-  /*background-image: url("assets/udonn.jpg");*/
-  background-size:cover;
-  background-position: center;
-  height: 700px;
-}
-
-.top-image::before{
-content: '';
-position: absolute;
-
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-background-color: rgba(0,0,0,0.5);
 }
 
 
@@ -77,19 +60,6 @@ background-color: rgba(0,0,0,0.5);
     z-index: 100;
 }
 
-
-/* topページ */
-
-.top-text {
-  margin-top: 100px;
-  margin-bottom: 150px;
-}
-
-.top-btn {
-  width: 90%;
-  margin: 0 auto;
-  height: 100px;
-}
 
 
 /* 各ページのボタン */
@@ -163,16 +133,6 @@ a.btn--yellow:hover {
 }
 
 
-
-.sign-up-field {
-  margin-top: 20px;
-  padding-left: 100px;
-}
-
-.sign-in-field {
-  margin-top: 20px;
-  padding-left: 180px;
-}
 
 input.btn--orange {
   color: #000;
@@ -294,6 +254,23 @@ input.btn--yellow {
   transform: rotate(145deg);
 }
 
-.form-control {
+
+/*.f-group select {*/
+/*  width: 100px;*/
+/*  display: inline-flex;*/
+/*}*/
+
+.f-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
   width: 100%;
+}
+
+.f-group-append {
+  display: flex;
+}
+
+.header-row {
+  height: 55px;
 }

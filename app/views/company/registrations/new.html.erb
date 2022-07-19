@@ -1,58 +1,60 @@
 <div class="container">
-  <div class="row text-center mb-5 mt-5">
-    <h5 class="col-2 offset-5">企業新規登録</h5>
+  <div class="row">
+    <div class="col-12">
+    <h5 class="title">企業新規登録</h5>
+    </div>
   </div>
   <div class="row">
-    <div class="col-6 offset-3 border border-dark rounded bg-light mb-5 pb-3">
+    <div class="col-4 offset-4 border border-dark rounded bg-light mb-5 pb-3">
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "company/shared/error_messages", resource: resource %>
 
 
-        <div class="sign-up-field">
+        <div class="field">
           <%= f.label "会社名" %><br />
-          <%= f.text_field :name %>
+          <%= f.text_field :name, class: "form" %>
         </div>
 
-        <div class="sign-up-field">
+        <div class="field">
           <%= f.label "職種" %><br />
-          <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "--職種を選択--" %>
+          <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "職種を選択", class: "form" %>
         </div>
 
-        <div class="sign-up-field">
+        <div class="field">
           <%= f.label "勤務地" %><br />
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--都道府県を選択--" %>
-          <%= f.text_field :city, placeholder: "例: ○○市" %>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "都道府県を選択", size: "50x50" %>
+          <%= f.text_field :city, placeholder: "例: ○○市", class: "form" %>
         </div>
 
 
-        <div class="sign-up-field">
+        <div class="field">
           <%= f.label "雇用形態" %><br />
-          <%= f.radio_button :employment_status, :true, checked: true %>
+          <%= f.radio_button :employment_status, :true, checked: true, class: "radio-btn" %>
           <%= f.label :employment_status, "正社員" %><br>
-          <%= f.radio_button :employment_status, :false %>
+          <%= f.radio_button :employment_status, :false, class: "radio-btn" %>
           <%= f.label :employment_status, "アルバイト/パート" %>
         </div>
 
-        <div class="sign-up-field">
+        <div class="field">
           <%= f.label "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form" %>
         </div>
 
-        <div class="sign-up-field">
+        <div class="field">
           <%= f.label "パスワード" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form" %>
         </div>
 
-        <div class="sign-up-field">
+        <div class="field">
           <%= f.label "パスワード再入力" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form" %>
         </div>
 
-        <div class="text-center mt-4">
+        <div class="submit">
           <%= f.submit "新規登録", class: "btn btn--orange btn--cubic btn--shadow" %>
         </div>
       <% end %>
