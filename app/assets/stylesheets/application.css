@@ -23,7 +23,7 @@ a:active { color: black; }
 
 
 body {
-  background-image: url("assets/kawa.jpg");
+  background-image: image-url("assets/kawa.jpg");
   background-attachment: fixed;
   background-size: cover;
   overflow-x: hidden;
