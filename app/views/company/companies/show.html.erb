@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-3 border border-company bg-light px-0 mb-5 mt-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 border border-company bg-light px-0 mb-5 mt-5">
       <%= image_tag @company.get_company_image, size:"200x150", style: "width: 100%; height: auto;" %>
       <table class="table ">
         <tbody>
@@ -37,11 +37,11 @@
       <% if @company == current_company %>
         <% if @company.name != "guestcompany" %>
           <div class="text-right pb-3 pr-3">
-            <%= link_to edit_company_company_path do %>
-              <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+            <%= link_to edit_company_company_path, class: "btn btn-warning" do %>
+              <i class="fas fa-edit"></i>
             <% end %>
-            <%= link_to company_unsubscribe_path do %>
-              <i class="fas fa-sign-out-alt btn btn--red btn--cubic btn--shadow"></i>
+            <%= link_to company_unsubscribe_path, class: "btn btn-danger" do %>
+              <i class="fas fa-sign-out-alt"></i>
             <% end %>
           </div>
         <% end %>
@@ -55,7 +55,7 @@
       <% if user_signed_in? %>
       <div class="text-center mb-3 mt-2" style="width: 100%;">
         <%= form_with model: @room, url: user_rooms_path(company_id: @company.id) do |f| %>
-          <%= f.button :type => "submit", class: " btn btn--info btn--cubic btn--shadow dm-btn" do %>
+          <%= f.button :type => "submit", class: "btn btn-info", style: "width: 70%;" do %>
             <i class="fas fa-envelope"></i>
           <% end %>
         <% end %>
@@ -63,33 +63,38 @@
       <% end %>
     </div>
   </div>
+  <div class="row justify-content-center">
+    <h4 class="col-12 company-post-text">
+      <%= @company.name %>さんの投稿一覧
+    </h4>
+  </div>
 
-  <div class="row">
-    <% @posts.each do |post| %>
-      <% link_to company_post_path do %>
-        <div class="col-4 offset-4 post-shadow bg-light border rounded px-0 mb-5">
-          <div class="slider">
-            <% post.post_images.each do |image| %>
-              <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
+  <% @posts.each do |post| %>
+  <div class="row justify-content-center">
+    <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 post-shadow bg-light border rounded px-0 mb-5">
+      <%= link_to company_post_path(post) do %>
+        <div class="slider">
+          <% post.post_images.each do |image| %>
+            <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
+          <% end %>
+        </div>
+        <p class="pt-3 px-2"><%= post.detail %></p>
+        <div class="col-12 d-flex px-0 pb-3 pt-3">
+          <div class="col-6">
+            <% if company_signed_in? %>
+              <i class="fas fa-heart heart1"></i><%= post.likes.count %>
+            <% elsif user_signed_in? %>
+              <div id="post_likes_<%= post.id %>">
+                <%= render 'company/likes/like', post: post %>
+              </div>
             <% end %>
           </div>
-          <p class="pt-3 px-2"><%= post.detail %></p>
-          <div class="col-12 d-flex px-0 pb-3 pt-3">
-            <div class="col-6">
-              <% if company_signed_in? %>
-                <i class="fas fa-heart heart1"></i><%= post.likes.count %>
-              <% elsif user_signed_in? %>
-                <div id="post_likes_<%= post.id %>">
-                  <%= render 'company/likes/like', post: post %>
-                </div>
-              <% end %>
-            </div>
-            <div class="col-6 text-right">
-              <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
-            </div>
+          <div class="col-6 text-right">
+            <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
           </div>
         </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
+  <% end %>
 </div>

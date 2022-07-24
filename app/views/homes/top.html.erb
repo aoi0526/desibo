@@ -12,27 +12,27 @@
   <div class="row toprow">
 
     <div class="col-2 top-link">
-      <%= link_to "新規登録", "/companies/sign_up", class: "btn btn--orange btn--cubic btn--shadow top-btn" %>
+      <%= link_to "新規登録", new_company_registration_path, class: "btn btn--orange btn--cubic btn--shadow top-btn" %>
     </div>
 
     <div class="col-2">
-      <%= link_to "ログイン", "/companies/sign_in", class: "btn btn--yellow btn--cubic btn--shadow top-btn" %>
+      <%= link_to "ログイン", new_company_session_path, class: "btn btn--yellow btn--cubic btn--shadow top-btn" %>
     </div>
 
     <div class="col-2">
-      <%= link_to 'ゲストログイン', '/company/guest_sign_in', class: "btn btn--gray btn--cubic btn--shadow top-btn", method: :post %>
+      <%= link_to 'ゲストログイン', company_guest_sign_in_path, class: "btn btn--gray btn--cubic btn--shadow top-btn", method: :post %>
     </div>
 
     <div class="col-2">
-      <%= link_to "新規登録", "/users/sign_up", class: "btn btn--orange btn--cubic btn--shadow top-btn" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn--orange btn--cubic btn--shadow top-btn" %>
     </div>
 
     <div class="col-2">
-      <%= link_to "ログイン", "users/sign_in", class: "btn btn--yellow btn--cubic btn--shadow top-btn" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn--yellow btn--cubic btn--shadow top-btn" %>
     </div>
 
     <div class="col-2">
-      <%= link_to 'ゲストログイン', '/user/guest_sign_in', class: "btn btn--gray btn--cubic btn--shadow top-btn", method: :post %>
+      <%= link_to 'ゲストログイン', user_guest_sign_in_path, class: "btn btn--gray btn--cubic btn--shadow top-btn", method: :post %>
     </div>
 
   </div>

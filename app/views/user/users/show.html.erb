@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-3 border border-company bg-light px-0 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 border border-company bg-light px-0 mb-5">
       <%= image_tag @user.get_user_image, size:"200x150", style: "width: 100%; height: auto;" %>
       <table class="table ">
         <tbody>
@@ -21,11 +21,11 @@
       <% if @user == current_user && user_signed_in? %>
         <% if @user.name != "guestuser" %>
           <div class="text-right pb-3 pr-3">
-            <%= link_to edit_user_user_path do %>
-              <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+            <%= link_to edit_user_user_path, class: "btn btn-warning" do %>
+              <i class="fas fa-edit"></i>
             <% end %>
-            <%= link_to user_unsubscribe_path do %>
-              <i class="fas fa-sign-out-alt btn btn--red btn--cubic btn--shadow"></i>
+            <%= link_to user_unsubscribe_path, class: "btn btn-danger" do %>
+              <i class="fas fa-sign-out-alt"></i>
             <% end %>
           </div>
         <% end %>

@@ -1,14 +1,15 @@
-.title {
-  text-align: center;
+.form-title {
   color: #ffffff;
-
+  width: 100%;
+  margin: 110px auto 50px;
+  text-align: center;
 }
 
 .field {
   padding: 10px;
 }
 
-input .form {
+input.form {
   width: 100%;
   margin: 0 auto;
 }

@@ -13,6 +13,12 @@ import "script"
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "../stylesheets/homes"
+import "../stylesheets/company/registrations"
+import "../stylesheets/company/sessions"
+import "../stylesheets/company/companies"
+import "../stylesheets/user/registrations"
+import "../stylesheets/user/sessions"
 import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()
