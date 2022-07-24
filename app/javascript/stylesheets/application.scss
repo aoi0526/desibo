@@ -1,2 +1,264 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+a:hover {
+text-decoration: none;
+}
+a:link { color: black; }
+a:visited { color: black; }
+a:hover {color: black; }
+a:active { color: black; }
+
+
+body {
+  background-image: url("kawa.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.container::before{
+  content: '';
+  position: fixed;
+  width: 40%;
+  margin: 0 auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+/* slick前後ボタン */
+
+.slick-prev
+{
+    left: 10px;
+}
+.slick-next
+{
+    right: 10px;
+}
+
+.slider .slick-prev,
+.slider .slick-next
+{
+    /* スライド画像の後ろに隠れないようにする */
+    z-index: 100;
+}
+
+
+
+/* 各ページのボタン */
+
+a.btn--orange {
+  color: #000;
+  background: #ffa500;
+  border-bottom: 5px solid #b84c00;
+  font-weight: bold;
+}
+
+a.btn--orange:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #ff8c00;
+  border-bottom: 2px solid #b84c00;
+}
+
+a.btn--red {
+  color: #000;
+  background: #ff0000;
+  border-bottom: 5px solid #800000;
+  font-weight: bold;
+}
+
+svg.btn--red {
+  color: #000;
+  background: #ff0000;
+  border-bottom: 5px solid #800000;
+  font-weight: bold;
+}
+
+a.btn--red:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #800000;
+  border-bottom: 2px solid #800000;
+}
+
+a.btn--gray {
+  color: #000;
+  background: #a9a9a9;
+  border-bottom: 5px solid #696969;
+  font-weight: bold;
+}
+
+a.btn--gray:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #696969;
+  border-bottom: 2px solid #696969;
+}
+
+.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+a.btn--yellow {
+  color: #000;
+  background-color: #fff100;
+  border-bottom: 5px solid #ccc100;
+  font-weight: bold;
+}
+
+a.btn--yellow:hover {
+  margin-top: 3px;
+  color: #000;
+  background: #ffd700;
+  border-bottom: 2px solid #ccc100;
+}
+
+
+
+input.btn--orange {
+  color: #000;
+  background: #ffa500;
+  border-bottom: 5px solid #b84c00;
+  font-weight: bold;
+}
+
+.btn--orange:hover {
+  margin-top: 3px;
+  color: #000;
+  background-color: #ff8c00;
+  border-bottom: 2px solid #b84c00;
+}
+
+.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+input.btn--yellow {
+  color: #000;
+  background-color: #fff100;
+  border-bottom: 5px solid #ccc100;
+  font-weight: bold;
+}
+
+.btn--yellow:hover {
+  margin-top: 3px;
+  color: #000;
+  background: #ffd700;
+  border-bottom: 2px solid #ccc100;
+}
+
+
+/* ブックマークデザイン */
+.bookmark1 {
+  font-size:2em;
+  color: #ffd700;
+}
+
+.bookmark2 {
+  font-size:2em;
+}
+
+.heart1 {
+  color: #ff7fff;
+  font-size: 1.3em;
+}
+
+.heart2 {
+  font-size: 1.3em;
+}
+
+
+/*投稿*/
+.post-shadow {
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+    transition: all 0.4s;
+}
+
+/*hoverをしたらボックスの影が拡がり色が濃くなる*/
+.post-shadow:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
+    border-color: transparent;
+    transform: scale(1.05, 1.05);
+}
+
+
+
+
+/* DM機能　自分のメッセージの吹き出し*/
+.says {
+  float: left;
+  position: relative;
+  padding: 16px;
+  background: #7fff7f;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #7fff7f;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+/*自分以外のメッセージの吹き出し*/
+.other-user-says {
+  float: right;
+  position: relative;
+  padding: 16px;
+  background: #7fff7f;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.other-user-says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #7fff7f;
+  -webkit-transform: rotate(145deg);
+  transform: rotate(145deg);
+}
+
+
+/*.f-group select {*/
+/*  width: 100px;*/
+/*  display: inline-flex;*/
+/*}*/
+
+.f-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.f-group-append {
+  display: flex;
+}
+
+.header-row {
+  height: 55px;
+}
