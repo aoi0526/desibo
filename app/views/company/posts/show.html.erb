@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 offset-3 bg-light border bg-light rounded px-0 mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 bg-light border bg-light rounded px-0 mt-5 mb-5">
       <%= link_to company_company_path(@post.company.id) do %>
         <div class="p-2">
           <%= image_tag @post.company.get_company_image, size:"50x50", class: "rounded-circle" %>
@@ -36,11 +36,11 @@
 
       <% if company_signed_in? %>
         <div class="text-right">
-            <%= link_to edit_company_post_path, class: " btn btn--orange btn--cubic btn--shadow mr-2 mb-2" do %>
-            <i class="fas fa-pencil"></i>
+            <%= link_to edit_company_post_path, class: " btn btn-warning mr-2 mb-2" do %>
+            <i class="fas fa-edit"></i>
           <% end %>
 
-          <%= link_to company_post_path, method: :delete, data: { confirm: '本当に消しますか？'}, class: " btn btn--red btn--cubic btn--shadow mr-2 mb-2" do %>
+          <%= link_to company_post_path, method: :delete, data: { confirm: '本当に消しますか？'}, class: " btn btn-danger mr-2 mb-2" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>

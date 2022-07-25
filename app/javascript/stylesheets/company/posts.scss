@@ -3,31 +3,29 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-a.btn--orange {
-  color: #000;
-  background: #ffa500;
-  border-bottom: 5px solid #b84c00;
-  font-weight: bold;
+.new-post-title {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 50px;
 }
 
-.btn--orange:hover {
-  margin-top: 3px;
-  color: #000;
-  background-color: #ff8c00;
-  border-bottom: 2px solid #b84c00;
+.post-edit-title {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 50px;
 }
 
-a.btn--red{
-  color: #000;
-  background: #ff0000;
-  border-bottom: 5px solid #8b0000;
-  font-weight: bold;
+.post-create-btn {
+  width: 60%;
+  margin-bottom: 20px;
 }
 
-.btn--red:hover {
-  margin-top: 3px;
-  color: #000;
-  background-color: #8b0000;
-  border-bottom: 2px solid #8b0000;
+.post-edit-btn {
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.btn-form {
+  margin-top: 100px;
 }
 

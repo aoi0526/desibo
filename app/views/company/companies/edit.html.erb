@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-3 border bg-light px-0">
+    <div class="col-12">
+      <h4 class="edit-title">企業情報編集</h4>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 border bg-light px-0">
       <%= form_with model: @company, url: company_company_path do |f| %>
         <table class="table border-bottom">
           <tbody>
@@ -39,7 +44,7 @@
           </tbody>
         </table>
         <div class="text-center">
-          <%= f.button :type => "submit", class: " btn btn--green btn--cubic btn--shadow edit-btn mb-3" do %>
+          <%= f.button :type => "submit", class: " btn btn-success edit-btn" do %>
             <i class="fas fa-check"></i>
           <% end %>
         </div>

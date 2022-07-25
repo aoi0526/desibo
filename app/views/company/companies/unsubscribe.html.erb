@@ -1,2 +1,13 @@
-<%= link_to "退会する", company_withdraw_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
-<%= link_to "退会しない", company_company_path(current_company) %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="unsubscribe-title">本当に退会しますか？</h4>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 px-0 btn-form">
+      <div><%= link_to "退会する", company_withdraw_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger unsubscribe-btn"%></div>
+      <div><%= link_to "退会しない", company_company_path(current_company), class: "btn btn-success unsubscribe-btn" %></div>
+    </div>
+  </div>
+</div>
