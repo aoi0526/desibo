@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-3 border border-company bg-light px-0 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-5 col-lg-7 col-md-9 col-sm-11 border border-company bg-light px-0 mb-5">
       <%= image_tag @user.get_user_image, size:"200x150", style: "width: 100%; height: auto;" %>
       <table class="table ">
         <tbody>
@@ -29,8 +29,8 @@
         </tbody>
       </table>
       <div class="text-right pb-3 pr-3">
-        <%= link_to edit_admin_user_path do %>
-          <i class="fas fa-pencil btn btn--orange btn--cubic btn--shadow"></i>
+        <%= link_to edit_admin_user_path, class: "btn btn-warning" do %>
+          <i class="fas fa-edit"></i>
         <% end %>
       </div>
     </div>

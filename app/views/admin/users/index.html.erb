@@ -1,34 +1,39 @@
 <div class="container">
   <div class="row">
-    <% @users.each do |user| %>
-      <div class="col-4 offset-4 post-shadow border bg-light rounded px-0 mb-5">
+    <div class="col-12">
+      <h4 class="index-title">ユーザー一覧</h4>
+    </div>
+  </div>
+  
+  <% @users.each do |user| %>
+    <div class="row justify-content-center">
+      <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 post-shadow border bg-light rounded px-0 mb-5">
         <%= link_to admin_user_path(user.id) do %>
-          <%= image_tag user.get_user_image, style: "width: 100%; height: auto;" %>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>名前</th>
-                  <th><%= user.name %></th>
-                </tr>
-                <tr>
-                  <th>住所</th>
-                  <th><%= user.prefecture.name %><%= user.city %></th>
-                </tr>
-                <tr>
-                  <th>会員ステータス</th>
-                  <th>
-                    <% if user.is_deleted? %>
-                      <p class="text-danger">退会済み</p>
-                    <% else %>
-                       <p class="text-success">登録中</p>
-                    <% end %>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>名前</th>
+                <th><%= user.name %></th>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <th><%= user.prefecture.name %><%= user.city %></th>
+              </tr>
+              <tr>
+                <th>会員ステータス</th>
+                <th>
+                  <% if user.is_deleted? %>
+                    <p class="text-danger">退会済み</p>
+                  <% else %>
+                     <p class="text-success">登録中</p>
+                  <% end %>
+                </th>
+              </tr>
+            </tbody>
+          </table>
         <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 

@@ -1,37 +1,31 @@
-<div class-"container">
-  <div class="row">
-    <% @posts.each do |post| %>
-    <div class="col-4 offset-4 post-shadow border bg-light rounded px-0 mb-5">
-
-      <%= link_to admin_company_path(post.company.id) do %>
-        <div class="p-2">
-          <%= image_tag post.company.get_company_image, size:"50x50", class: "rounded-circle" %>
-          <%= post.company.name %>
-        </div>
-      <% end %>
-
-        <div class="slider">
-          <% post.post_images.each do |image| %>
-            <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
-          <% end %>
-        </div>
-
-      <%= link_to admin_post_path(post.id) do %>
-
-        <p class="pt-3 px-2"><%= post.detail %></p>
-
-        <p class="pt-3 px-2"><%= post.company.prefecture.name %> <%= post.company.city %></p>
-
-        <div class="col-12 d-flex px-0 pb-3 pt-3">
-          <div class="col-6">
-            <i class="fas fa-heart heart1"></i><%= post.likes.count %>
+<div class="container">
+  <% @posts.each do |post| %>
+    <div class="row justify-content-center">
+      <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 post-shadow border bg-light rounded px-0 mt-5 mb-5">
+        <%= link_to admin_company_path(post.company.id) do %>
+          <div class="p-2">
+            <%= image_tag post.company.get_company_image, size:"50x50", class: "rounded-circle" %>
+            <%= post.company.name %>
           </div>
-          <div class="col-6 text-right">
-            <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
+        <% end %>
+          <div class="slider">
+            <% post.post_images.each do |image| %>
+              <div><%= image_tag image, style: "width: 100%; height: auto;" %></div>
+            <% end %>
           </div>
-        </div>
-      <% end %>
+        <%= link_to admin_post_path(post.id) do %>
+          <p class="pt-3 px-2"><%= post.detail %></p>
+          <p class="pt-3 px-2"><%= post.company.prefecture.name %> <%= post.company.city %></p>
+          <div class="col-12 d-flex px-0 pb-3 pt-3">
+            <div class="col-6">
+              <i class="fas fa-heart heart1"></i><%= post.likes.count %>
+            </div>
+            <div class="col-6 text-right">
+              <%= post.created_at.strftime('%Y/%m/%d %-H:%-M') %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
