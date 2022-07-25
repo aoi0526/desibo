@@ -33,12 +33,11 @@ class Company < ApplicationRecord
   end
 
   def self.company_guest
-    find_or_create_by!(name: 'guestcompany' ,email: 'guest@example.com', prefecture_id: 12, city: '船橋市', occupation_genre_id: 1) do |company|
+    find_or_create_by!(name: 'guestcompany' ,email: 'guest@example.com', prefecture_id: 12, city: '船橋市') do |company|
       company.password = SecureRandom.urlsafe_base64
       company.name = "guestcompany"
       company.prefecture_id = 12
       company.city = "船橋市"
-      company.occupation_genre_id = 1
     end
   end
 
