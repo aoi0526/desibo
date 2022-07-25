@@ -1,4 +1,5 @@
 class Company::CompaniesController < ApplicationController
+  before_action :authenticate_company!, except: [:show]
   def show
     @company = Company.find(params[:id])
     @posts = Post.where(company_id: @company.id).all.order(created_at: :desc)
@@ -13,7 +14,7 @@ class Company::CompaniesController < ApplicationController
     @company.update(company_params)
     redirect_to company_company_path(current_company)
   end
-  
+
   def withdraw
     @company = Company.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる

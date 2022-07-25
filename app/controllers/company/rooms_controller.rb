@@ -1,4 +1,5 @@
 class Company::RoomsController < ApplicationController
+  before_action :authenticate_company!, only: [:index, :show]
   def index
     @rooms = Room.where(company_id: current_company).order(updated_at: :desc) #送ってきた日時を新しい順で取得する
   end

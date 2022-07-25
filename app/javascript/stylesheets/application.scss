@@ -30,6 +30,20 @@ body {
 }
 
 
+.nav-item {
+  margin: 0 20px 0;
+  font-size: 1.2em;
+}
+
+.nav-link {
+  padding: 4px;
+}
+
+.site-title {
+  font-size: 2.3em;
+  margin-bottom: 0;
+}
+
 
 
 /* slick前後ボタン */
@@ -190,7 +204,7 @@ input.btn--yellow {
     transition: all 0.4s;
 }
 
-/*hoverをしたらボックスの影が拡がり色が濃くなる*/
+/*hoverをしたらボックスの影が拡がる*/
 .post-shadow:hover {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
     border-color: transparent;
@@ -244,6 +258,9 @@ input.btn--yellow {
   transform: rotate(145deg);
 }
 
+
+/* form */
+
 .f-group {
   position: relative;
   display: flex;
@@ -260,6 +277,8 @@ input.btn--yellow {
 }
 
 
+
+/* 無限ロード */
 nav.pagination {
   display: none;
 }
@@ -273,6 +292,8 @@ nav.pagination {
 }
 
 
+
+/* レスポンシブ対応 */
 @media screen and (max-width:1024px) {
   .container::before{
     content: '';

@@ -1,5 +1,5 @@
 class User::RoomsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:show, :index, :create]
   def index
     @rooms = Room.where(user_id: current_user).order(updated_at: :desc) #送ってきた日時を新しい順で取得する
   end

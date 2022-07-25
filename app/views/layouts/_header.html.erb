@@ -1,88 +1,139 @@
-<div class="container-fulid" style="width: 100%;">
-  <div class="row header-row text-center pt-3">
-    <!--company側-->
-    <% if company_signed_in? %>
-
-      <div class="col-4 offset-1">
-        <%= link_to "タイムライン", company_posts_path, class: "mr-5" %>/
-        <%= link_to "新規投稿", new_company_post_path, class: "mr-5 ml-5" %>/
-        <%= link_to "マイページ", company_company_path(current_company.id), class: "ml-5" %>
-      </div>
-      <div class="col-2">
-        <h1><%= link_to "DESIBO", root_path %></h1>
-      </div>
-      <div class="col-4">
-        <%= link_to "DM", company_rooms_path, class: "mr-5" %>/
-        <% if company_unchecked_notifications.any? %>
-          <%= link_to "通知", company_notifications_path, class: "ml-5" %>
-          <i class="fa fa-circle mr-5" style="color: red;"></i>
-        <% else %>
-          <%= link_to "通知", company_notifications_path, class: "ml-5 mr-5" %>
-        <% end %>/
-        <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "ml-5" %>
-      </div>
-
-    <!--user側-->
-    <% elsif user_signed_in? %>
-
-      <div class="col-4 offset-1">
-        <%= link_to "タイムライン", company_posts_path, class: "mr-5" %>/
-        <%= link_to "気になる", user_favorites_path, class: "ml-5 mr-5" %>/
-        <%= link_to "マイページ", user_user_path(current_user.id), class: "ml-5" %>
-      </div>
-
-      <div class="col-2">
-        <h1><%= link_to "DESIBO", root_path %></h1>
-      </div>
-
-      <div class="col-4">
-        <%= link_to "DM", user_rooms_path, class: "mr-5" %>/
-
-        <% if user_unchecked_notifications.any? %>
-           <%= link_to "通知", user_notifications_path, class: "ml-5" %>
-          <i class="fa fa-circle mr-5" style="color: red;"></i>
-        <% else %>
-          <%= link_to "通知", user_notifications_path, class: "ml-5 mr-5" %>
-        <% end %>/
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "ml-5" %>
-      </div>
-
-    <% elsif admin_signed_in? %>
-
-      <div class="col-4 offset-1">
-        <%= link_to "タイムライン", admin_posts_path, class: "mr-5" %>/
-        <%= link_to "職業ジャンル", admin_occupation_genres_path, class: "ml-5" %>
-      </div>
-
-      <div class="col-2">
-        <h1><%= link_to "DESIBO", admin_posts_path %></h1>
-      </div>
-
-      <div class="col-4">
-        <%= link_to "ユーザー一覧", admin_users_path, class: "mr-5" %>/
-        <%= link_to "企業一覧", admin_companies_path, class: "mr-5 ml-5" %>/
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "ml-5" %>
-      </div>
-
-    <!--非ログイン時-->
-    <% else %>
-
-      <div class="col-4 offset-1">
-        <div><%= link_to "タイムライン", company_posts_path %></div>
-      </div>
-
-      <div class="col-2">
-        <h1><%= link_to "DESIBO", root_path %></h1>
-      </div>
-
-      <div class="col-4">
-        <div><%= link_to "DESIBOとは？", about_path %></div>
-      </div>
-
-    <% end %>
-  </div>
-
-  <% unless admin_signed_in? %>
-    <%= render 'searches/search_form' %>
+<nav class="navbar navbar-expand-xl navbar-light bg-light justify-content-center p-0 pt-2">
+  <% if company_signed_in? %>
+    <h1 class="site-title"><%= link_to "DESIBO", company_posts_path %></h1>
+  <% elsif user_signed_in? %>
+    <h1 class="site-title"><%= link_to "DESIBO", company_posts_path %></h1>
+  <% elsif admin_signed_in? %>
+    <h1 class="site-title"><%= link_to "DESIBO", admin_posts_path %></h1>
+  <% else %>
+    <h1 class="site-title"><%= link_to "DESIBO", root_path %></h1>
   <% end %>
-</div>
+</nav>
+<nav class="navbar navbar-expand-xl navbar-light bg-light p-0 pb-1">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <% if company_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "タイムライン", company_posts_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "新規投稿", new_company_post_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "マイページ", company_company_path(current_company.id) %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "DM", company_rooms_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <% if company_unchecked_notifications.any? %>
+              <%= link_to "通知", company_notifications_path %>
+              <i class="fa fa-circle" style="color: red;"></i>
+            <% else %>
+              <%= link_to "通知", company_notifications_path %>
+            <% end %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "ログアウト", destroy_company_session_path, method: :delete %>
+          </a>
+        </li>
+      <% elsif user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "タイムライン", company_posts_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "気になる", user_favorites_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "マイページ", user_user_path(current_user.id) %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "DM", user_rooms_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <% if user_unchecked_notifications.any? %>
+              <%= link_to "通知", user_notifications_path %>
+              <i class="fa fa-circle" style="color: red;"></i>
+            <% else %>
+              <%= link_to "通知", user_notifications_path %>
+            <% end %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </a>
+        </li>
+      <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "タイムライン", admin_posts_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "職業ジャンル", admin_occupation_genres_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "ユーザー一覧", admin_users_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "企業一覧", admin_companies_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          </a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "タイムライン", company_posts_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to "DESIBOとは？", about_path %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<% unless admin_signed_in? %>
+<nav class="navbar navbar-expand-xl justify-content-center navbar-light bg-light">
+  <%= render 'searches/search_form' %>
+</nav>
+<% end %>
+
+
