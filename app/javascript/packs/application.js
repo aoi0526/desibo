@@ -21,6 +21,7 @@ import "../stylesheets/company/posts"
 import "../stylesheets/company/rooms"
 import "../stylesheets/user/registrations"
 import "../stylesheets/user/sessions"
+import "../stylesheets/user/users"
 import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()

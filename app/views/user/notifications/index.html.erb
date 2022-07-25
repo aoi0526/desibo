@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row">
-        <div class="col-6 offset-3">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-6 col-md-10 col-sm-12">
             <h3 class="text-center">通知</h3>
-            <%= link_to user_destroy_all_notifications_path, method: :delete, class: "btn btn--red btn--shadow" do %>
+            <%= link_to user_destroy_all_notifications_path, method: :delete, class: "btn btn-danger" do %>
                 <i class="fas fa-trash" style="color: black;"></i>
                 <h7 style="color: black;">全削除</h7>
             <% end %>
@@ -21,7 +21,7 @@
               </table>
 
             <% else %>
-                <p>通知はありません</p>
+                <p class="text-white text-center mt-5">通知はありません</p>
             <% end %>
         </div>
     </div>

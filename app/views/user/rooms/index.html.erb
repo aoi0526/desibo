@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
+  <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-6 col-md-10 col-sm-12">
       <h2 class="text-center mb-5">DM一覧</h2>
       <% @rooms.each do |room| %>
         <%= link_to user_room_path(room) do %>
@@ -16,7 +16,9 @@
               </td>
               <td>
                 <!-- 最後のメッセージがどのくらい前に送られたか表示する -->
-                <p class="text-white text-right pt-4 mb-0"><%= "#{time_ago_in_words(room.messages.last.created_at)}前" %></p>
+                <% if room.messages.exists? %>
+                  <p class="text-white text-right pt-4 mb-0"><%= "#{time_ago_in_words(room.messages.last.updated_at)}前" %></p>
+                <% end %>
               </td>
             </tr>
           </table>
