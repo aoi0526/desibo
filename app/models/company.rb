@@ -18,7 +18,7 @@ class Company < ApplicationRecord
   belongs_to :occupation_genre
 
   has_one_attached :company_image
-  
+
   # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
     super && (is_deleted == false)
@@ -32,7 +32,7 @@ class Company < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  def self.guest
+  def self.company_guest
     find_or_create_by!(name: 'guestcompany' ,email: 'guest@example.com', prefecture_id: 12, city: '船橋市', occupation_genre_id: 1) do |company|
       company.password = SecureRandom.urlsafe_base64
       company.name = "guestcompany"

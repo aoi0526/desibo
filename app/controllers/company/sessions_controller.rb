@@ -27,7 +27,7 @@ class Company::SessionsController < Devise::SessionsController
   end
 
   def guest_sign_in
-    company = Company.guest
+    company = Company.company_guest
     sign_in company
     redirect_to company_company_path(current_company.id)
   end

@@ -30,7 +30,7 @@ class User < ApplicationRecord
     like.where(post_id: post.id).exists?
   end
 
-  def self.guest
+  def self.user_guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com', prefecture_id: 12, city: '船橋市') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
