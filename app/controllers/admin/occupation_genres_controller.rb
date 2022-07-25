@@ -2,7 +2,7 @@ class Admin::OccupationGenresController < ApplicationController
   def index
     @occupation_genre = OccupationGenre.new
     @occupation_genre.destroy
-    @occupation_genres = OccupationGenre.all
+    @occupation_genres = OccupationGenre.all.page(params[:page]).per(10)
   end
 
   def create

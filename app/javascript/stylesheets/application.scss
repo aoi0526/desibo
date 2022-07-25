@@ -30,6 +30,8 @@ body {
 }
 
 
+
+
 /* slick前後ボタン */
 
 .slick-prev
@@ -242,12 +244,6 @@ input.btn--yellow {
   transform: rotate(145deg);
 }
 
-
-/*.f-group select {*/
-/*  width: 100px;*/
-/*  display: inline-flex;*/
-/*}*/
-
 .f-group {
   position: relative;
   display: flex;
@@ -261,6 +257,19 @@ input.btn--yellow {
 
 .header-row {
   height: 55px;
+}
+
+
+nav.pagination {
+  display: none;
+}
+.scroll-list {
+  padding: 0;
+}
+
+.loading {
+  color: #ffffff;
+  text-align: center;
 }
 
 

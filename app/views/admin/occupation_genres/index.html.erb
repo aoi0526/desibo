@@ -24,18 +24,21 @@
             </th>
           </tr>
         </thead>
-        <% @occupation_genres.each do |occupation_genre| %>
-          <tr>
-            <th class="text-white">
-              <%= occupation_genre.name %>
-            </th>
-            <th>
-              <%= link_to admin_occupation_genre_path(occupation_genre.id), method: :delete, data: { confirm: '本当に消しますか？'}, class: " btn btn--red btn--cubic btn--shadow mr-2 mb-2" do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
-            </th>
-          </tr>
-        <% end %>
+        <div class="scroll-list jscroll">
+          <% @occupation_genres.each do |occupation_genre| %>
+            <tr>
+              <th class="text-white">
+                <%= occupation_genre.name %>
+              </th>
+              <th>
+                <%= link_to admin_occupation_genre_path(occupation_genre.id), method: :delete, data: { confirm: '本当に消しますか？'}, class: " btn btn--red btn--cubic btn--shadow mr-2 mb-2" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </th>
+            </tr>
+          <% end %>
+          <%= paginate @occupation_genres %>
+        </div>
       </table>
     </div>
   </div>
