@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-start mb-4">
       <%= image_tag message.user.get_user_image, size: "50x50", class: "rounded-circle" %>
       <%= simple_format(message.body, class: "says tex-left ml-3 mb-0") %>
-      <small class="d-flex align-items-end ml-1">
+      <small class="d-flex align-items-end text-white ml-1">
         <%= message.created_at.strftime('%H:%M') %>
       </small>
     </div>
@@ -14,7 +14,7 @@
   <%# 企業のメッセージ %>
   <% unless message.company.nil? %>
     <div class="d-flex justify-content-end mb-4">
-      <small class="d-flex align-items-end mr-1">
+      <small class="d-flex align-items-end  text-white mr-1">
         <%= message.created_at.strftime('%H:%M') %>
       </small>
       <%= simple_format(message.body, class: "other-user-says text-right mr-3 mb-0") %>
