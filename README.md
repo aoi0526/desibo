@@ -1,4 +1,4 @@
-# successors
+# DESIBO
 
 ## サイト概要
 ### サイトテーマ
