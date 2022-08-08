@@ -16,7 +16,6 @@ $(window).on('scroll', function() {
     $('.jscroll').jscroll({
       contentSelector: '.scroll-list',
       nextSelector: 'span.next:last a',
-      loadingHtml: '<p class="loading">Loading...</>',
       callback: function(){
         $('.slider').slick({
           autoplay: true,
