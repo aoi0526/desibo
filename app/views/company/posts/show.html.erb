@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <% if company_signed_in? %>
+      <% if @post.company_id == current_company.id %>
         <div class="text-right">
             <%= link_to edit_company_post_path, class: " btn btn-warning mr-2 mb-2" do %>
             <i class="fas fa-edit"></i>

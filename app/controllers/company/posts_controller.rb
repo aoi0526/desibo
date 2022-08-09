@@ -1,5 +1,5 @@
 class Company::PostsController < ApplicationController
-  before_action :authenticate_company!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
   def new
     @post = Post.new
   end
