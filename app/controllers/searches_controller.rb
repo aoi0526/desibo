@@ -1,12 +1,15 @@
 class SearchesController < ApplicationController
 
-  def prefecture_search
-    method = params[:prefecture_id]
-    @companies = Company.where(prefecture_id: method)
+  def company_search
+    prefecture = params[:prefecture_id]
+    occupation = params[:occupation_genre_id]
+    if occupation == ""
+      @companies = Company.where(prefecture_id: prefecture).page(params[:page]).per(2)
+    elsif prefecture == ""
+      @companies = Company.where(occupation_genre_id: occupation).page(params[:page]).per(2)
+    else
+      @companies = Company.where(prefecture_id: prefecture).where(occupation_genre_id: occupation).page(params[:page]).per(2)
+    end
   end
 
-  def occupation_search
-    method = params[:occupation_genre_id]
-    @companies = Company.where(occupation_genre_id: method)
-  end
 end

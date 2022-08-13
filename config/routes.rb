@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'about' => 'homes#about'
   get 'admin_top' => 'homes#admin_top'
-  get 'prefecture_search' => 'searches#prefecture_search'
-  get 'occupation_search' => 'searches#occupation_search'
+  get 'company_search' => 'searches#company_search'
 
 
   #company側ルーティング

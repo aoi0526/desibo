@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="scroll-list jscroll">
+    <% @companies.each do |company| %>
+      <div class="row justify-content-center">
+        <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 bg-light post-shadow border bg-light rounded px-0 mb-5 mt-5">
+          <%= link_to company_company_path(company.id) do %>
+            <%= image_tag company.get_company_image, style: "width: 100%; height: auto;" %>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th class="pl-5">会社名</th>
+                  <th><%= company.name %></th>
+                </tr>
+                <tr>
+                  <th class="pl-5">職種</th>
+                  <th><%= company.occupation_genre.name %></th>
+                </tr>
+                <tr>
+                  <th class="pl-5">勤務地</th>
+                  <th><%= company.prefecture.name %> <%= company.city %></th>
+                </tr>
+                <tr>
+                  <th class="pl-5">雇用形態</th>
+                  <th>
+                    <% if company.employment_status == true %>
+                      正社員
+                    <% else %>
+                      アルバイト
+                    <% end %>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @companies %>
+  </div>
+</div>
