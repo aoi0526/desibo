@@ -1,4 +1,5 @@
 class Admin::OccupationGenresController < ApplicationController
+  before_action :authenticate_admin!, only: [:index, :create, :destory]
   def index
     @occupation_genre = OccupationGenre.new
     @occupation_genre.destroy

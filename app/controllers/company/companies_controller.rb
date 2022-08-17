@@ -1,5 +1,5 @@
 class Company::CompaniesController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_company!, except: [:show]
   def show
     @company = Company.find(params[:id])
     @posts = Post.where(company_id: @company.id).all.order(created_at: :desc)
