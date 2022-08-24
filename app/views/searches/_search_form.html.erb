@@ -1,8 +1,9 @@
 <!--都道府県検索フォーム-->
 <%= form_with url: company_search_path, method: :get do |f| %>
   <div class="f-group mr-3">
-    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "---都道府県で検索---", class: "form" %>
-    <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "----職種で検索----", class: 'form' %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "都道府県", class: "mr-1" %>
+    <%= f.collection_select :occupation_genre_id, OccupationGenre.all, :id, :name, include_blank: "職種", class: 'form' %>
+    <%= f.select :employment_status, [['アルバイト',false],['正社員',true]], { include_blank: "雇用形態" } %>
     <div class="f-group-append">
       <%= f.button :type => "submit" do %>
         <i class="fas fa-search"></i>
