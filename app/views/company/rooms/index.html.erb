@@ -13,7 +13,7 @@
                 <td>
                   <font size="5" class="text-white"><%= room.user.name %>さん</font><br>
                   <!-- そのroomの最後のメッセージを表示 -->
-                  <font size="4" class="ml-4 text-white"><%= Message.find_by(id: room.messages.last)&.body %></font>
+                  <font size="4" class="ml-4 text-white"><%= Message.find_by(id: room.messages.last)&.body.truncate(18) %></font>
                 </td>
                 <td>
                   <!-- 最後のメッセージがどのくらい前に送られたか表示する -->
